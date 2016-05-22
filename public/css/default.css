@@ -1,42 +1,30 @@
 html, body {
 	font-size: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	background-color: #fff;
+	background-color: #F5F8FA;
 }
 
 #sidebar {
 	height: 100vh;
-	background: #000;
+	background: url('../images/iceland.jpg') center no-repeat;
 	position: fixed;
 	color: #fff;
 }
 
-#sidebar:after {
-	background: url('../images/bg.jpg') center no-repeat;
-	content: "";
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	top: 0;
-	opacity: 0.4;
-	z-index: -1;
-	background-size: cover;
+/* Centered Element */
+.flex {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
 }
 
-.hv-centered-parent {
-	-webkit-transform-style: preserve-3d;
-	-moz-transform-style: preserve-3d;
-	transform-style: preserve-3d;
+.flex-child {
+	margin: auto;
 }
-
-.hv-centered {
-	position: relative;
-	top: 50%;
-	transform: translateY(-50%);
-}
+/* End Centered Element */
 
 .sidebar-img {
-	border: 3px solid #fff;
 	cursor: pointer;
 }
 
@@ -61,7 +49,7 @@ html, body {
 }
 
 .sidebar-menu li a:hover {
-	color: #2FA19A;
+	color: #3097D1;
 }
 
 /* Content */
@@ -69,27 +57,43 @@ html, body {
 /* Tab Panel */
 .tab-panel {
 	list-style: none;
-	margin: 40px 0 0 0;
+	margin-top: 15px;
 	padding: 0;
-	border-bottom: 1px solid #efefef;
-	padding-left: 30px;
+	margin-bottom: 15px;
 }
 
 .tab-panel li {
+	position: relative;
 	display: inline-block;
 	margin-right: 7px;
 	cursor: pointer;
-	padding: 0 0 5px 0;
-	border-bottom: 1px solid #efefef;
-	margin-bottom: -1px;
-	text-transform: uppercase;
-	color: #999;
+	color: rgba(255, 255, 255, .8);
+	padding: 5px 10px;
+	background: #3097D1;
 }
 
-.tab-panel li:hover, .tab-panel li.active {
+.tab-panel li:hover {
+	color: #fff;
+}
+
+.tab-panel li:after {
+	content: '';
+	display: block;
+	height: 0;
+	width: 0;
+	margin: auto;
+	border: 0 solid;
+	border-color: #3097D1 transparent transparent transparent;
+	position: absolute;
+	bottom: -10px;
+}
+.tab-panel li.active:after {
+	border-width: 5px;
+}
+/*.tab-panel li:hover, .tab-panel li.active {
 	border-bottom: 2px solid #2FA19A;
 	color: #000
-}
+}*/
 
 .tab-content .box-content {
 	display: none;
@@ -101,16 +105,22 @@ html, body {
 }
 
 #posts section {
-	border-bottom: 2px solid #efefef;
-	padding: 10px 30px;
-}
-
-#posts section:last-child {
-	border-bottom: none;
+	padding: 15px;
+	background-color: #fff;
+	margin: 10px 0;
+	border-bottom: 2px solid #d3e0e9;
+	border-radius: 3px; 
+	-webkit-border-radius: 3px; 
+	-moz-border-radius: 3px; 
+	color: #1e3948;
 }
 
 #posts section header a {
-	color: #333;
+	display: block;
+	color: #1e3948;
+	font-weight: bold;
+	font-size: 13pt;
+	margin-bottom: 5px;
 	text-decoration: none;
 }
 
@@ -119,17 +129,31 @@ html, body {
 }
 
 #posts section p {
-	font-size: 13pt;
+	font-size: 11pt;
 }
 
 #posts section p.post-foot {
 	font-size: 10pt;
 	color: #999;
 	clear: both;
+	margin: 0;
 }
 
 .img-post {
 	margin: 0 8px 8px 0;
+}
+
+.post {
+	display: table !important;
+}
+.post-author {
+	display: table-cell;
+	width: 60px;
+	padding-right: 15px;
+}
+.post-content {
+	vertical-align: top;
+	display: table-cell;
 }
 
 /* Search */
@@ -138,7 +162,7 @@ html, body {
 	top: 0;
 	position: absolute;
 	width: 100%;
-	background: #2FA19A;
+	background: #3097D1;
 }
 .search-form form {
 	margin: 15px;
@@ -159,21 +183,23 @@ html, body {
 .search {
 	float: right;
 	border: none !important;
+	background: none !important;
+	color: #ccc !important;
 }
 
 a, a:hover {
-	color: #2FA19A;
+	color: #3097D1;
 }
 
 /* Categories */
 
 #categories {
-	padding: 30px 30px 0 30px;
+	padding: 0;
 }
 
 .category {
 	margin: 5% 0;
-	padding: 10px;
+	padding: 15px;
 	min-height: 150px;
 	position: relative;
 	overflow: hidden;
@@ -208,29 +234,19 @@ a.cat-link {
 /* Site Content */
 
 .site-content {
-	margin: 30px;
+	margin: 10px;
 }
 
 .contact-form label {
-	color: #2FA19A;
+	color: #3097D1;
 }
 
 .contact-form input, .contact-form textarea {
 	border-radius: 0;
-	border: 1px solid #2FA19A;
+	border: 1px solid #3097D1;
 	-webkit-box-shadow: none !important;
 	-moz-box-shadow: none !important;
 	box-shadow: none !important;
-}
-
-.contact-form button[type=submit] {
-	border-radius: 0;
-}
-
-.btn-contact:hover {
-	background: #2FA19A !important;
-	border-color: #2FA19A;
-	color: #fff;
 }
 
 footer {
@@ -245,7 +261,7 @@ footer {
 	right: 15px;
 	padding: 10px;
 	cursor: pointer;
-	color: #2FA19A;
+	color: #3097D1;
 	opacity: 0.4;
 }
 

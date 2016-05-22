@@ -23,7 +23,7 @@
 				<label for="">Message *</label>
 				<textarea name="msg" class="form-control" rows="3" required="required" placeholder="Say hello!"></textarea>
 			</div>
-			<button type="submit" class="btn btn-default btn-contact">Submit</button>
+			<button type="submit" class="btn btn-success">Submit</button>
 		</form>
 	</div>
 </div>

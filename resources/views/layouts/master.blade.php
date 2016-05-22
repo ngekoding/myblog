@@ -24,8 +24,8 @@
 		
 		<div class="container-fluid">
 			<div class="row">
-			<div class="{!! $headWidth !!} hv-centered-parent" id="sidebar">
-				<div class="text-center hv-centered">
+			<div class="{!! $headWidth !!} flex" id="sidebar">
+				<div class="text-center flex-child">
 					<p align="center">
 						<img src="images/profile.jpg" class="img-responsive img-circle sidebar-img" alt="Image" width="150" height="150">
 					</p>

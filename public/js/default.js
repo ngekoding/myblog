@@ -16,10 +16,10 @@ $(document).ready(function() {
 	$('.search-btn').click(function() {
 		if ($('.search-form').is(':visible')) {
 			$('.search-form').slideUp();
-			$('.tab-panel').animate({'margin-top':'40px'});
+			$('.tab-panel').animate({'margin-top':'15px'});
 		} else {
 			$('.search-form').slideDown();
-			$('.tab-panel').animate({'margin-top':'100px'});
+			$('.tab-panel').animate({'margin-top':'80px'});
 			$('.search-in').focus();
 		}
 	});

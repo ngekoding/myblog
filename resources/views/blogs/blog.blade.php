@@ -22,42 +22,70 @@
 	<div class="tab-content">
 		<div id="posts" class="box-content">
 			<section>
-				<header>
-					<h2><a href="#">Lorem ipsum dolor</a></h2>
-				</header>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo architecto quaerat, non fugiat eos aspernatur repellat voluptate, rerum blanditiis provident dolore nesciunt optio aliquid, reprehenderit reiciendis, voluptatibus corrupti voluptatem sequi!</p>
-				<p class="post-foot">
-					<a href="#">Nur Muhammad</a> in <a href="#">Travel</a> / April 20, 2016
-				</p>
+				<div class="post">
+					<div class="post-author">
+						<img class="img-circle img-responsive" src="images/profile.jpg">
+					</div>
+					<div class="post-content">
+						<header>
+							<a href="#">Lorem ipsum dolor</a>
+						</header>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo architecto quaerat, non fugiat eos aspernatur repellat voluptate, rerum blanditiis provident dolore nesciunt optio aliquid, reprehenderit reiciendis, voluptatibus corrupti voluptatem sequi!</p>
+						<p class="post-foot">
+							<a href="#">Nur Muhammad</a> in <a href="#">Travel</a> / April 20, 2016
+						</p>
+					</div>
+				</div>
 			</section>
 			<section>
-				<header>
-					<h2><a href="#">Lorem ipsum dolor</a></h2>
-				</header>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo architecto quaerat, non fugiat eos aspernatur repellat voluptate, rerum blanditiis provident dolore nesciunt optio aliquid, reprehenderit reiciendis, voluptatibus corrupti voluptatem sequi!</p>
-				<p class="post-foot">
-					<a href="#">Nur Muhammad</a> in <a href="#">Travel</a> / April 20, 2016
-				</p>
+				<div class="post">
+					<div class="post-author">
+						<img class="img-circle img-responsive" src="images/profile.jpg">
+					</div>
+					<div class="post-content">
+						<header>
+							<a href="#">Lorem ipsum dolor</a>
+						</header>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo architecto quaerat, non fugiat eos aspernatur repellat voluptate, rerum blanditiis provident dolore nesciunt optio aliquid, reprehenderit reiciendis, voluptatibus corrupti voluptatem sequi!</p>
+						<p class="post-foot">
+							<a href="#">Nur Muhammad</a> in <a href="#">Travel</a> / April 20, 2016
+						</p>
+					</div>
+				</div>
 			</section>
 			<section>
-				<header>
-					<h2><a href="#">Lorem ipsum dolor</a></h2>
-				</header>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo architecto quaerat, non fugiat eos aspernatur repellat voluptate, rerum blanditiis provident dolore nesciunt optio aliquid, reprehenderit reiciendis, voluptatibus corrupti voluptatem sequi!</p>
-				<p class="post-foot">
-					<a href="#">Nur Muhammad</a> in <a href="#">Travel</a> / April 20, 2016
-				</p>
+				<div class="post">
+					<div class="post-author">
+						<img class="img-circle img-responsive" src="images/profile.jpg">
+					</div>
+					<div class="post-content">
+						<header>
+							<a href="#">Lorem ipsum dolor</a>
+						</header>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo architecto quaerat, non fugiat eos aspernatur repellat voluptate, rerum blanditiis provident dolore nesciunt optio aliquid, reprehenderit reiciendis, voluptatibus corrupti voluptatem sequi!</p>
+						<p class="post-foot">
+							<a href="#">Nur Muhammad</a> in <a href="#">Travel</a> / April 20, 2016
+						</p>
+					</div>
+				</div>
 			</section>
 			<section>
-				<header>
-					<h2><a href="#">Lorem ipsum dolor</a></h2>
-				</header>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo architecto quaerat, non fugiat eos aspernatur repellat voluptate, rerum blanditiis provident dolore nesciunt optio aliquid, reprehenderit reiciendis, voluptatibus corrupti voluptatem sequi!</p>
-				<p class="post-foot">
-					<a href="#">Nur Muhammad</a> in <a href="#">Travel</a> / April 20, 2016
-				</p>
+				<div class="post">
+					<div class="post-author">
+						<img class="img-circle img-responsive" src="images/profile.jpg">
+					</div>
+					<div class="post-content">
+						<header>
+							<a href="#">Lorem ipsum dolor</a>
+						</header>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo architecto quaerat, non fugiat eos aspernatur repellat voluptate, rerum blanditiis provident dolore nesciunt optio aliquid, reprehenderit reiciendis, voluptatibus corrupti voluptatem sequi!</p>
+						<p class="post-foot">
+							<a href="#">Nur Muhammad</a> in <a href="#">Travel</a> / April 20, 2016
+						</p>
+					</div>
+				</div>
 			</section>
-
+			
 		</div>
 		<div id="categories" class="box-content">
 
@@ -67,7 +95,7 @@
 			    		<div class="category">
 							<h3>Geek</h3>
 							<p>3 posts</p>
-							<img src="images/bg.jpg" alt="Category" class="cat-img">
+							<img src="images/profile.jpg" alt="Category" class="cat-img">
 				    	</div>
 			    	</a>
 			    </div>
@@ -76,7 +104,7 @@
 			    		<div class="category">
 							<h3>Geek</h3>
 							<p>3 posts</p>
-							<img src="images/bg.jpg" alt="Category" class="cat-img">
+							<img src="images/profile.jpg" alt="Category" class="cat-img">
 				    	</div>
 			    	</a>
 			    </div>
@@ -85,7 +113,7 @@
 			    		<div class="category">
 							<h3>Geek</h3>
 							<p>3 posts</p>
-							<img src="images/bg.jpg" alt="Category" class="cat-img">
+							<img src="images/profile.jpg" alt="Category" class="cat-img">
 				    	</div>
 			    	</a>
 			    </div>
@@ -94,7 +122,7 @@
 			    		<div class="category">
 							<h3>Geek</h3>
 							<p>3 posts</p>
-							<img src="images/bg.jpg" alt="Category" class="cat-img">
+							<img src="images/profile.jpg" alt="Category" class="cat-img">
 				    	</div>
 			    	</a>
 			    </div>
@@ -103,7 +131,7 @@
 			    		<div class="category">
 							<h3>Geek</h3>
 							<p>3 posts</p>
-							<img src="images/bg.jpg" alt="Category" class="cat-img">
+							<img src="images/profile.jpg" alt="Category" class="cat-img">
 				    	</div>
 			    	</a>
 			    </div>
@@ -112,7 +140,7 @@
 			    		<div class="category">
 							<h3>Geek</h3>
 							<p>3 posts</p>
-							<img src="images/bg.jpg" alt="Category" class="cat-img">
+							<img src="images/profile.jpg" alt="Category" class="cat-img">
 				    	</div>
 			    	</a>
 			    </div>
@@ -121,7 +149,7 @@
 	</div> <!-- .tab-content -->
 
 	<footer>
-		<p align="center">&copy; 2016 <a href="#">Nur Muhammad</a></p>
+		<p align="center">Copyright &copy; 2016 <a href="#">Nur Muhammad</a></p>
 	</footer>
 </div>
 
