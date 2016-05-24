@@ -2,10 +2,6 @@
 	<h4>Categories</h4>
 </div>
 
-@if (session('list-success')) 
-	<div class="alert alert-success">{{ session('list-success') }}</div>
-@endif
-
 <table class="table">
   <thead>
     <tr>
@@ -25,9 +21,9 @@
 	      <td>{!! $category->name !!}</td>
 	      <td>{!! $category->slug !!}</td>
 	      <td>
-	      	{{ Form::open(['url' => 'categories/'.$category->id, 'class' => 'pull-right'])}}
+	      	{{ Form::open(['url' => 'categories/'.$category->id, 'class' => 'pull-right', 'id' => 'myForm'])}}
 				{{ Form::hidden('_method', 'DELETE') }}
-				<button class="btn btn-danger btn-xs" type="submit" title="Delete">
+				<button class="btn btn-danger btn-xs btn-delete" type="submit" title="Delete">
 					<i class="fa fa-trash"></i> 
 				</button> 
 	      	{{ Form::close() }}

@@ -12,16 +12,15 @@
 				</div>
 				
 				@include('common.errors')
-				@include('common.success')
 
 				{{ Form::open(array('url' => 'categories')) }}
 					<div class="form-group">
 						{{ Form::label('name', 'Name') }}
-						{{ Form::text('name', Form::old('name'), array('class' => 'form-control')) }}
+						{{ Form::text('name', Form::old('name'), array('class' => 'form-control cat-title')) }}
 				    </div>
 				    <div class="form-group">
 						{{ Form::label('slug', 'Slug') }}
-						{{ Form::text('slug', Form::old('slug'), array('class' => 'form-control')) }}
+						{{ Form::text('slug', Form::old('slug'), array('class' => 'form-control slug')) }}
 				    </div>
 				    <div class="form-group">
 						{{ Form::label('description', 'Description') }}

@@ -10,6 +10,8 @@ use App\Category;
 
 use Validator;
 
+use Alert;
+
 class CategoryController extends Controller
 {
     public function index() {
@@ -23,12 +25,8 @@ class CategoryController extends Controller
     }
 
     public function store(Request $request) {
-    	$rules = [
-    		'name' => 'required',
-    		'slug' => 'required'
-    	];
 
-    	$validator = Validator::make($request->all(), $rules);
+    	$validator = Validator::make($request->all(), Category::$rules);
 
     	if ($validator->fails()) {
     		return redirect('categories/create')
@@ -44,7 +42,9 @@ class CategoryController extends Controller
 
 		$category->save();
 
-		return redirect('categories')->with('success', 'Successfully create category!');
+		Alert::success('Successfully create category!', 'Success');
+
+		return redirect('categories');
     }
 
     public function edit($id) {
@@ -55,12 +55,8 @@ class CategoryController extends Controller
     }
 
     public function update($id, Request $request) {
-    	$rules = [
-    		'name' => 'required',
-    		'slug' => 'required'
-    	];
 
-    	$validator = Validator::make($request->all(), $rules);
+    	$validator = Validator::make($request->all(), Category::$rules);
 
     	if ($validator->fails()) {
     		return redirect('categories/'.$request->id.'/edit')
@@ -72,13 +68,17 @@ class CategoryController extends Controller
 
     	$category->fill($request->all())->save();
 
-    	return redirect('categories')->with('list-success', 'Successfully update the category!');
+    	Alert::success('Successfully update the category!', 'Updated!');
+
+    	return redirect('categories');
     }
 
     public function destroy($id) {
     	$category = Category::find($id);
     	$category->delete();
 
-    	return redirect('categories')->with('list-success', 'Successfully delete the category!');
+    	Alert::success('Successfully delete the category', 'Deleted!');
+
+    	return redirect('categories');
     }
 }

@@ -17,11 +17,11 @@
 				{{ Form::model($category, array('route' => array('categories.update', $category->id), 'method' => 'PUT')) }}
 					<div class="form-group">
 						{{ Form::label('name', 'Name') }}
-						{{ Form::text('name', null, array('class' => 'form-control')) }}
+						{{ Form::text('name', null, array('class' => 'form-control cat-title')) }}
 				    </div>
 				    <div class="form-group">
 						{{ Form::label('slug', 'Slug') }}
-						{{ Form::text('slug', null, array('class' => 'form-control')) }}
+						{{ Form::text('slug', null, array('class' => 'form-control slug')) }}
 				    </div>
 				    <div class="form-group">
 						{{ Form::label('description', 'Description') }}

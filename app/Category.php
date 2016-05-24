@@ -10,7 +10,13 @@ class Category extends Model
 
     protected $fillable = ['name', 'slug', 'description'];
 
+    public static $rules = [
+    		'name' => 'required',
+    		'slug' => 'required'
+	];
+
     public function post() {
     	return $this->belongsTo('App\Post');
     }
+
 }
