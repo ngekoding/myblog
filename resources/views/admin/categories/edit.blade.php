@@ -17,7 +17,7 @@
 				{{ Form::model($category, array('route' => array('categories.update', $category->id), 'method' => 'PUT')) }}
 					<div class="form-group">
 						{{ Form::label('name', 'Name') }}
-						{{ Form::text('name', null, array('class' => 'form-control cat-title')) }}
+						{{ Form::text('name', null, array('class' => 'form-control title-slug')) }}
 				    </div>
 				    <div class="form-group">
 						{{ Form::label('slug', 'Slug') }}
@@ -25,7 +25,7 @@
 				    </div>
 				    <div class="form-group">
 						{{ Form::label('description', 'Description') }}
-						{{ Form::textarea('description', null, array('class' => 'form-control')) }}
+						{{ Form::textarea('description', null, array('class' => 'form-control', 'rows' => '3')) }}
 				    </div>
 				    <div class="form-group">
 						{{ Form::submit('Submit', array('class' => 'btn btn-success')) }}

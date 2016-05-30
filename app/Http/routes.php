@@ -18,3 +18,5 @@ Route::get('/blog/{slug}', 'BlogController@showPostDetail');
 
 Route::resource('categories', 'CategoryController');
 Route::resource('posts', 'PostController');
+Route::resource('users', 'UserController');
+

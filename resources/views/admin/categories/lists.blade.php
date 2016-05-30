@@ -21,9 +21,13 @@
 	      <td>{!! $category->name !!}</td>
 	      <td>{!! $category->slug !!}</td>
 	      <td>
-	      	{{ Form::open(['url' => 'categories/'.$category->id, 'class' => 'pull-right', 'id' => 'myForm'])}}
-				{{ Form::hidden('_method', 'DELETE') }}
-				<button class="btn btn-danger btn-xs btn-delete" type="submit" title="Delete">
+			{{ Form::open([
+	      			'method' => 'DELETE',
+	      			'route' => ['categories.destroy', $category->id], 
+	      			'class' => 'pull-right', 
+	      			'id' => 'my-form-' . $no
+	      	]) }}
+				<button class="my-form-{{ $no }} btn btn-danger btn-xs btn-delete" type="submit" title="Delete">
 					<i class="fa fa-trash"></i> 
 				</button> 
 	      	{{ Form::close() }}

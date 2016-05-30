@@ -14,11 +14,15 @@ class Post extends Model
     	'content' 	=> 'required'
     ];
 
-    public function category() {
-    	return $this->hasOne('App\Category');
+    public function categories() {
+    	return $this->belongsToMany('App\Category');
     }
 
     public function tag() {
-    	return $this->belongsToMany('App\Tag');
+    	return $this->belongsToMany('App\Tag', 'post_tags');
+    }
+
+    public function author() {
+        return $this->belongsTo('App\User');
     }
 }

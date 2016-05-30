@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Category;
 
+use App\Http\Requests\CategoryRequest;
+
 use Validator;
 
 use Alert;
@@ -24,15 +26,7 @@ class CategoryController extends Controller
     	return $this->index();
     }
 
-    public function store(Request $request) {
-
-    	$validator = Validator::make($request->all(), Category::$rules);
-
-    	if ($validator->fails()) {
-    		return redirect('categories/create')
-    			->withErrors($validator)
-    			->withInput();
-    	}
+    public function store(CategoryRequest $request) {
 		
 		$category = new Category();
 		
@@ -54,15 +48,7 @@ class CategoryController extends Controller
     	return view('admin.categories.edit', ['category' => $category, 'categories' => $categories]);
     }
 
-    public function update($id, Request $request) {
-
-    	$validator = Validator::make($request->all(), Category::$rules);
-
-    	if ($validator->fails()) {
-    		return redirect('categories/'.$request->id.'/edit')
-    			->withErrors($validator)
-    			->withInput();
-    	}
+    public function update($id, CategoryRequest $request) {
 
     	$category = Category::find($id);
 

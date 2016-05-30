@@ -16,7 +16,7 @@
 				{{ Form::open(array('url' => 'categories')) }}
 					<div class="form-group">
 						{{ Form::label('name', 'Name') }}
-						{{ Form::text('name', Form::old('name'), array('class' => 'form-control cat-title')) }}
+						{{ Form::text('name', Form::old('name'), array('class' => 'form-control title-slug')) }}
 				    </div>
 				    <div class="form-group">
 						{{ Form::label('slug', 'Slug') }}
@@ -24,7 +24,7 @@
 				    </div>
 				    <div class="form-group">
 						{{ Form::label('description', 'Description') }}
-						{{ Form::textarea('description', Form::old('desc'), array('class' => 'form-control')) }}
+						{{ Form::textarea('description', Form::old('desc'), array('class' => 'form-control', 'rows' => '3')) }}
 				    </div>
 				    <div class="form-group">
 						{{ Form::submit('Submit', array('class' => 'btn btn-success')) }}

@@ -10,22 +10,26 @@
 			<div class="page-header">
 				<h4>Add Post</h4>
 			</div>
-			<form role="form">
+			
+			@include('common.errors')
+
+			{{ Form::open(['url' => 'posts']) }}
+
 			    <div class="form-group">
-			      <label for="title">Title</label>
-			      <input type="text" name="title" class="form-control" id="title">
+			    	{{ Form::label('title', 'Title') }}
+					{{ Form::text('title', Form::old('title'), array('class' => 'form-control title-slug')) }}
 			    </div>
 			    <div class="form-group">
-			      <label for="slug">Slug</label>
-			      <input type="text" name="slug" class="form-control" id="slug">
+			    	{{ Form::label('slug', 'Slug') }}
+					{{ Form::text('slug', Form::old('slug'), array('class' => 'form-control slug')) }}
 			    </div>
 				<div class="form-group">
-					<label for="content">Content</label>
-					<textarea name="content" class="form-control" rows="5" id="content"></textarea>
+					{{ Form::label('content', 'Content') }}
+					{{ Form::textarea('content', Form::old('content'), array('class' => 'form-control tiny')) }}
 				</div>
 				<div class="form-group">
-					<label for="sel1">Category</label>
-					<select class="form-control select2" multiple>
+					{{ Form::label('category', 'Category') }}
+					<select name="categories[]" class="form-control select2" multiple id="category">
 						@foreach($categories as $category)
 							<option value="{{ $category->id }}">{{ $category->name }}</option>
 						@endforeach
@@ -34,7 +38,7 @@
 				<div class="form-group">
 					<button type="submit" name="submit" class="btn btn-success">Submit</button>
 				</div>
-			</form>
+			{{ Form::close() }}
 		</div>
 	</div>
 </div>
