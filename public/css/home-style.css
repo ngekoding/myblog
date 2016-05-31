@@ -1,0 +1,52 @@
+html, body {
+	font-size: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color: #F5F8FA;
+}
+
+#home {
+	height: 100vh;
+	background: url('../images/iceland.jpg') center no-repeat;
+	color: #fff;
+}
+
+/* Centered Element */
+.flex {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+
+.flex-child {
+	margin: auto;
+}
+/* End Centered Element */
+
+.home-img {
+	cursor: pointer;
+}
+
+/* home Menu */
+.home-menu {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.home-menu li {
+	display: inline;
+	margin: 0 2px;
+	text-align: center;
+}
+
+.home-menu li a {
+	text-decoration: none;
+	display: inline-block;
+	padding: 5px 15px;
+	color: #fff;
+}
+
+.home-menu li a:hover {
+	color: #3097D1;
+}

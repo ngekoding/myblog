@@ -8,15 +8,13 @@ use App\Http\Requests;
 
 class BlogController extends Controller
 {
-	private $md12 = ['headWidth' => 'col-md-12'];
-	private $md4  = ['headWidth' => 'col-md-4'];
 
     public function index() {
-    	return view('layouts.master', $this->md12);
+    	return view('blogs.index');
     }
 
     public function showPost() {
-    	return view('blogs.blog', $this->md4);
+    	return view('blogs.blog');
     }
 
     public function showPostDetail($slug) {
@@ -24,6 +22,6 @@ class BlogController extends Controller
     }
 
     public function showContact() {
-    	return view('blogs.contact', $this->md4);
+    	return view('blogs.contact');
     }
 }
