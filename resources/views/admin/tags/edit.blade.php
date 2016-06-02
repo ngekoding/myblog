@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'User')
+@section('title', 'Tag')
 
 @section('content')
 
@@ -8,27 +8,24 @@
 		<div class="col-md-6">
 			<div class="col-md-12 box">
 				<div class="page-header">
-					<h4>Add User</h4>
+					<h4>Edit Tag</h4>
 				</div>
 				
 				@include('common.errors')
+				@include('common.success')
 
-				{{ Form::open(['url' => 'auth/register']) }}
+				{{ Form::model($tag, array('route' => array('tags.update', $tag->id), 'method' => 'PUT')) }}
 					<div class="form-group">
 						{{ Form::label('name', 'Name') }}
-						{{ Form::text('name', Form::old('name'), array('class' => 'form-control')) }}
+						{{ Form::text('name', null, array('class' => 'form-control title-slug')) }}
 				    </div>
 				    <div class="form-group">
-						{{ Form::label('email', 'Email') }}
-						{{ Form::email('email', Form::old('email'), array('class' => 'form-control')) }}
+						{{ Form::label('slug', 'Slug') }}
+						{{ Form::text('slug', null, array('class' => 'form-control slug')) }}
 				    </div>
 				    <div class="form-group">
-						{{ Form::label('password', 'Password') }}
-						{{ Form::password('password', array('class' => 'form-control')) }}
-				    </div>
-				    <div class="form-group">
-						{{ Form::label('password_confirmation', 'Confirm Password') }}
-						{{ Form::password('password_confirmation', array('class' => 'form-control')) }}
+						{{ Form::label('description', 'Description') }}
+						{{ Form::textarea('description', null, array('class' => 'form-control', 'rows' => '3')) }}
 				    </div>
 				    <div class="form-group">
 						{{ Form::submit('Submit', array('class' => 'btn btn-success')) }}
@@ -39,7 +36,7 @@
 		<div class="col-md-6">
 			<div class="col-md-12 box">
 				
-				
+				@include('admin.tags.lists')
 
 			</div>
 		</div>

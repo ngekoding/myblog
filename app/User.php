@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role_id'
+        'name', 'email', 'password'
     ];
 
     /**
@@ -24,11 +24,32 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function role() {
-        return $this->belongsTo('App\Role');
+    public function roles() {
+        return $this->belongsToMany('App\Role', 'role_user', 'id_user', 'id_role');
     }
 
     public function posts() {
         return $this->hasMany('App\Post');
+    }
+
+    public function assignRole($role) {
+        if (is_string($role)) {
+            $role = Role::where('name', $role)->first();
+        }
+        return $this->roles()->attach($role);
+    }
+
+    public function revokeRole($role) {
+        if (is_string($role)) {
+            $role = Role::where('name', $role)->first();
+        }
+        return $this->roles()->detach($role);
+    }
+
+    public function hasRole($name) {
+        foreach ($this->roles as $role) {
+            if ($role->name === $name) return true;
+        }
+        return false;
     }
 }

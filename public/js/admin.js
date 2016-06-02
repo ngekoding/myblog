@@ -34,13 +34,24 @@ $(document).ready(function() {
 	    }
 	  });
 
-	// $('#toggle-sidebar').click(function() {
-	// 	var sidebar = $('.sidebar');
-	// 	var content = $('.content');
-
-	// 	if (content.is(':visible')) {
-	// 		sidebar.hide(200);
-	// 		content.css('width', '100%');
-	// 	}
-	// });
+	$('.feature-image').bind('blur change', function() {
+		var src = $(this).val();
+		if (src.length > 0){
+			var img = "<img src='" + src + "' width='150px'><br><br>";
+			$('.feature-image-view').html(img);
+		}
+	});
 });
+
+function openKCFinder(field) {
+	    window.KCFinder = {
+	        callBack: function(url) {
+	            field.value = url;
+	            $(field).change();
+	            window.KCFinder = null;
+	        }
+	    };
+	    window.open('../../vendor/kcfinder/browse.php?type=image', 'kcfinder_textbox',
+	        'status=0, toolbar=0, location=0, menubar=0, directories=0, resizable=1, scrollbars=0, width=800, height=600'
+	    );
+	}

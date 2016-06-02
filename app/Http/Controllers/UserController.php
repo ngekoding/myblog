@@ -16,7 +16,7 @@ class UserController extends Controller
 {
     public function index() {
     	$users = User::all();
-    	$roles = Role::all();
+    	$roles = Role::lists('name', 'id');
 
     	return view('admin.users.index', compact('users', 'roles'));
     }
@@ -31,11 +31,12 @@ class UserController extends Controller
     	$user->name = $request->name;
     	$user->email = $request->email;
     	$user->password = bcrypt($request->password);
-    	$user->role_id = $request->role;
 
     	$user->save();
     	
-    	Alert::success('Successfully create user!', 'Success');
+        $user->roles()->sync($request->roles);
+
+    	Alert::success('Successfully create user!', 'Created');
     	return redirect('users');
     }
 
@@ -52,7 +53,7 @@ class UserController extends Controller
 
     	$user->delete();
 
-    	Alert::success('Successfully delete user!', 'Success');
+    	Alert::success('Successfully delete user!', 'Deleted');
     	return redirect('users');
     }
 }

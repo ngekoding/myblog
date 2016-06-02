@@ -32,11 +32,7 @@
 				    </div>
 				    <div class="form-group">
 						{{ Form::label('role', 'Role') }}
-						<select name="role" class="form-control" id="role">
-							@foreach($roles as $role)
-								<option value="{{ $role->id }}">{{ $role->name }}</option>
-							@endforeach
-						</select>
+						{{ Form::select('roles[]', $roles, null, ['class' => 'form-control select2', 'multiple' => 'multiple']) }}
 				    </div>
 				    <div class="form-group">
 						{{ Form::submit('Submit', array('class' => 'btn btn-success')) }}

@@ -36,11 +36,15 @@
 						<nav>
 							<ul class="sidebar-menu">
 								<li><a href=""><i class="fa fa-dashboard fa-2x"></i> Dashboard</a></li>
+								@if (auth()->user()->hasRole('admin')))
+									<li><a href="{{ url('users') }}"><i class="fa fa-user fa-2x"></i> User</a></li>
+								@elseif(auth()->user()->hasRole('author')))
+									<li><a href="{{ url('categories') }}"><i class="fa fa-bookmark-o fa-2x"></i> Category</a></li>
+									<li><a href="{{ url('tags') }}"><i class="fa fa-bookmark-o fa-2x"></i> Tag</a></li>
+								@endif
 								<li><a href="{{ url('posts') }}"><i class="fa fa-bookmark-o fa-2x"></i> Post</a></li>
-								<li><a href="{{ url('categories') }}"><i class="fa fa-bookmark-o fa-2x"></i> Category</a></li>
-								<li><a href="{{ url('users') }}"><i class="fa fa-user fa-2x"></i> User</a></li>
 								<li><a href=""><i class="fa fa-cog fa-2x"></i> Settings</a></li>
-								<li><a href=""><i class="fa fa-sign-out fa-2x"></i> Logout</a></li>
+								<li><a href="{{ url('logout') }}"><i class="fa fa-sign-out fa-2x"></i> Logout</a></li>
 							</ul>
 						</nav>
 					</div>

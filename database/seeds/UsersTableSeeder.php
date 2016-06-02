@@ -14,22 +14,24 @@ class UsersTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-    	$adminRole  = Role::where('name', 'Administrator')->first()->id;
-		$authorRole = Role::where('name', 'Author')->first()->id;
+    {   
+    	$adminRole  = Role::where('name', 'admin')->first()->id;
+		$authorRole = Role::where('name', 'author')->first()->id;
 
-        User::create([
+        $user = User::create([
         	'name' 		=> 'Nur Muhammad',
-        	'email' 	=> str_random(10).'@gmail.com',
+        	'email' 	=> 'admin@gmail.com',
         	'password'	=> bcrypt('123456'),
-        	'role_id'	=> $adminRole
         ]);
 
-        User::create([
+        $user->assignRole('admin');
+
+        $user = User::create([
         	'name' 		=> 'Nur',
-        	'email' 	=> str_random(10).'@gmail.com',
+        	'email' 	=> 'author@gmail.com',
         	'password'	=> bcrypt('123456'),
-        	'role_id'	=> $authorRole
         ]);
+
+        $user->assignRole('author');
     }
 }

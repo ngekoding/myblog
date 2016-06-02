@@ -22,11 +22,12 @@
 	      <td>{{ $user->name }}</td>
 	      <td>{{ $user->email }}</td>
 	      <td>
-	      	@if ($user->role->name == 'Administrator')
-				Admin
-	      	@else
-				Author
-	      	@endif
+	      	<?php $roles = '' ?>
+	     	@foreach ($user->roles as $role)
+				<?php $roles .= ucwords($role->name) . ', ' ?>
+	     	@endforeach
+	     	<?php $roles = rtrim($roles, ', ') ?>
+	     	{{ $roles }}
 	      </td>
 	      <td>
 	      	{{ Form::open([

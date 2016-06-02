@@ -5,10 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\CategoryRequest;
 
 use App\Category;
-
-use App\Http\Requests\CategoryRequest;
 
 use Validator;
 
@@ -19,11 +18,11 @@ class CategoryController extends Controller
     public function index() {
     	$categories = Category::all();
 
-    	return view('admin.categories.create', ['categories' => $categories]);
+    	return view('admin.categories.index', ['categories' => $categories]);
     }
 
     public function create() {
-    	return $this->index();
+    	return abort(404);
     }
 
     public function store(CategoryRequest $request) {
@@ -36,7 +35,7 @@ class CategoryController extends Controller
 
 		$category->save();
 
-		Alert::success('Successfully create category!', 'Success');
+		Alert::success('Successfully create category!', 'Created');
 
 		return redirect('categories');
     }
@@ -54,7 +53,7 @@ class CategoryController extends Controller
 
     	$category->fill($request->all())->save();
 
-    	Alert::success('Successfully update the category!', 'Updated!');
+    	Alert::success('Successfully update the category!', 'Updated');
 
     	return redirect('categories');
     }
@@ -63,7 +62,7 @@ class CategoryController extends Controller
     	$category = Category::find($id);
     	$category->delete();
 
-    	Alert::success('Successfully delete the category', 'Deleted!');
+    	Alert::success('Successfully delete the category', 'Deleted');
 
     	return redirect('categories');
     }

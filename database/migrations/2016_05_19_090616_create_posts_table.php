@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->longText('content');
+            $table->string('image');
             $table->integer('author_id')->unsigned();
             $table->foreign('author_id')
                 ->references('id')

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'slug', 'content', 'author_id', 'category_id'];
+    protected $fillable = ['title', 'slug', 'content', 'image', 'author_id'];
 
     public static $rules = [
     	'title' 	=> 'required|min:3', 
@@ -18,8 +18,8 @@ class Post extends Model
     	return $this->belongsToMany('App\Category');
     }
 
-    public function tag() {
-    	return $this->belongsToMany('App\Tag', 'post_tags');
+    public function tags() {
+    	return $this->belongsToMany('App\Tag');
     }
 
     public function author() {

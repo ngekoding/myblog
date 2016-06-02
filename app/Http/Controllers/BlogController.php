@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Post;
+
 class BlogController extends Controller
 {
 
@@ -14,7 +16,9 @@ class BlogController extends Controller
     }
 
     public function showPost() {
-    	return view('blogs.blog');
+        $posts = Post::orderBy('created_at', 'desc')->simplePaginate(5);
+
+    	return view('blogs.blog', compact('posts'));
     }
 
     public function showPostDetail($slug) {

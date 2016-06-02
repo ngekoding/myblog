@@ -11,6 +11,6 @@ class Role extends Model
     protected $fillable = ['name'];
 
     public function users() {
-    	return $this->hasMany('App\User');
+    	return $this->belongsToMany('App\User', 'role_user', 'id_role', 'id_user');
     }
 }

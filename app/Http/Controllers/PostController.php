@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Requests\PostRequest;
 
 use App\Category;
+use App\Tag;
 use App\Post;
 use App\User;
 
@@ -18,15 +19,20 @@ use Alert;
 class PostController extends Controller
 {
     public function index() {
-        $posts = Post::all();
+        if (auth()->user()->hasRole('admin')) {
+            $posts = Post::all();
+        } else {
+            $posts = Post::where('author_id', auth()->user()->id);
+        }
 
-    	return view('admin.posts.index', ['posts' => $posts]);
+    	return view('admin.posts.index', compact('posts'));
     }
 
     public function create() {
-    	$categories = Category::all();
+    	$categories = Category::lists('name', 'id');
+        $tags = Tag::lists('name', 'id');
 
-    	return view('admin.posts.create', ['categories' => $categories]);
+    	return view('admin.posts.create', compact('tags', 'categories'));
     }
 
     public function store(PostRequest $request) {
@@ -34,25 +40,29 @@ class PostController extends Controller
         $post = new Post();
         $post->title = $request->title;
         $post->slug = $request->slug;
-        $post->author_id = User::where('role_id', 1)->first()->id;
+        $post->author_id = auth()->user()->id;
         $post->content = $request->content;
+        $post->image = $request->feature_image;
 
         $post->save();
         
         if (!empty($request->categories)) {
             $post->categories()->sync($request->categories);
         }
+        if (!empty($request->tags)) {
+            $post->tags()->sync($request->tags);
+        }
 
-        Alert::success('Successfully create post!', 'Success');
-
+        Alert::success('Successfully create post!', 'Created');
         return redirect('posts/create');
     }
 
     public function edit($id) {
         $post = Post::find($id);
-        $categories = Category::all();
+        $categories = Category::lists('name', 'id');
+        $tags = Tag::lists('name', 'id');
 
-        return view('admin.posts.edit', ['post' => $post, 'categories' => $categories]);
+        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
 
     public function update($id, PostRequest $request) {
@@ -61,16 +71,20 @@ class PostController extends Controller
 
         $post->title = $request->title;
         $post->slug = $request->slug;
-        $post->author_id = User::where('role_id', 1)->first()->id;
+        $post->author_id = auth()->user()->id;
         $post->content = $request->content;
+        $post->image = $request->feature_image;
 
         $post->save();
 
         if (!empty($request->categories)) {
             $post->categories()->sync($request->categories);
         }
+        if (!empty($request->tags)) {
+            $post->tags()->sync($request->tags);
+        }
 
-        Alert::success('Successfully update post!', 'Success');
+        Alert::success('Successfully update post!', 'Updated');
         return redirect('posts');
     }
 
@@ -78,7 +92,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->delete();
 
-        Alert::success('Successfully delete post!', 'Success');
+        Alert::success('Successfully delete post!', 'Deleted');
         return redirect('posts');
     }
 }

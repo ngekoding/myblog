@@ -48,87 +48,9 @@
 		
 		<div class="container">
 			<div class="col-md-8">
-				<article>
-					<header>
-						<h1><a href="#">Lorem ipsum dolor sit amet</a></h1>
-						<p class="article-info">
-							<i class="fa fa-calendar"></i> MAY 22, 2016 &nbsp;
-							<i class="fa fa-user"></i> NUR MUHAMMAD
-						</p>
-					</header>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo reiciendis, quibusdam voluptatem praesentium, tempora harum. Placeat, molestiae laborum tempora natus consectetur perspiciatis. Nisi asperiores eum perferendis, facere perspiciatis ipsa? Nam.</p>
-					<footer>
-						<i class="fa fa-folder"></i> &nbsp;
-						<a href="#">Tips and Tricks</a>,
-						<a href="#">Computer Hacking</a>
-						<span class="pull-right">
-							<i class="fa fa-comment"></i> <a href="#">16 Comments</a> &nbsp;
-							<a href="#" title="Share to Facebook"><i class="fa fa-facebook-square"></i> </a>
-							<a href="#" title="Share to Twitter"> <i class="fa fa-twitter-square"></i></a>
-						</span>
-					</footer>
-				</article>
-				<article>
-					<header>
-						<h1><a href="#">Lorem ipsum dolor sit amet</a></h1>
-						<p class="article-info">
-							<i class="fa fa-calendar"></i> MAY 22, 2016 &nbsp;
-							<i class="fa fa-user"></i> NUR MUHAMMAD
-						</p>
-					</header>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo reiciendis, quibusdam voluptatem praesentium, tempora harum. Placeat, molestiae laborum tempora natus consectetur perspiciatis. Nisi asperiores eum perferendis, facere perspiciatis ipsa? Nam.</p>
-					<footer>
-						<i class="fa fa-folder"></i> &nbsp;
-						<a href="#">Tips and Tricks</a>,
-						<a href="#">Computer Hacking</a>
-						<span class="pull-right">
-							<i class="fa fa-comment"></i> <a href="#">16 Comments</a> &nbsp;
-							<a href="#" title="Share to Facebook"><i class="fa fa-facebook-square"></i> </a>
-							<a href="#" title="Share to Twitter"> <i class="fa fa-twitter-square"></i></a>
-						</span>
-					</footer>
-				</article>
-				<article>
-					<header>
-						<h1><a href="#">Lorem ipsum dolor sit amet</a></h1>
-						<p class="article-info">
-							<i class="fa fa-calendar"></i> MAY 22, 2016 &nbsp;
-							<i class="fa fa-user"></i> NUR MUHAMMAD
-						</p>
-					</header>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo reiciendis, quibusdam voluptatem praesentium, tempora harum. Placeat, molestiae laborum tempora natus consectetur perspiciatis. Nisi asperiores eum perferendis, facere perspiciatis ipsa? Nam.</p>
-					<footer>
-						<i class="fa fa-folder"></i> &nbsp;
-						<a href="#">Tips and Tricks</a>,
-						<a href="#">Computer Hacking</a>
-						<span class="pull-right">
-							<i class="fa fa-comment"></i> <a href="#">16 Comments</a> &nbsp;
-							<a href="#" title="Share to Facebook"><i class="fa fa-facebook-square"></i> </a>
-							<a href="#" title="Share to Twitter"> <i class="fa fa-twitter-square"></i></a>
-						</span>
-					</footer>
-				</article>
-				<article>
-					<header>
-						<h1><a href="#">Lorem ipsum dolor sit amet</a></h1>
-						<p class="article-info">
-							<i class="fa fa-calendar"></i> MAY 22, 2016 &nbsp;
-							<i class="fa fa-user"></i> NUR MUHAMMAD
-						</p>
-					</header>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo reiciendis, quibusdam voluptatem praesentium, tempora harum. Placeat, molestiae laborum tempora natus consectetur perspiciatis. Nisi asperiores eum perferendis, facere perspiciatis ipsa? Nam.</p>
-					<footer>
-						<i class="fa fa-folder"></i> &nbsp;
-						<a href="#">Tips and Tricks</a>,
-						<a href="#">Computer Hacking</a>
-						<span class="pull-right">
-							<i class="fa fa-comment"></i> <a href="#">16 Comments</a> &nbsp;
-							<a href="#" title="Share to Facebook"><i class="fa fa-facebook-square"></i> </a>
-							<a href="#" title="Share to Twitter"> <i class="fa fa-twitter-square"></i></a>
-						</span>
-					</footer>
-				</article>
 				
+				@yield('content')
+
 			</div>
 			<div class="col-md-4">
 				<div class="side">

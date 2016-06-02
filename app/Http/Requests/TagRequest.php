@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class UserRequest extends Request
+class TagRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,8 @@ class UserRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-            'roles' => 'required',
+            'name' => 'required',
+            'slug' => 'required'
         ];
     }
 }
