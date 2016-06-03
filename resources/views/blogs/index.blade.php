@@ -27,15 +27,13 @@
 				<div class="col-md-12 flex" id="home">
 					<div class="text-center flex-child">
 						<p align="center">
-							<img src="images/profile.jpg" class="img-responsive img-circle home-img" alt="Image" width="150" height="150">
-						</p>
-						<h2>Nur</h2>
-						<p>UI/UX Designer</p>
-						<hr width="50px" size="5px">
+							<img src="images/logo.png" class="img-responsive home-img" alt="Image" width="150" height="150">
+						</p><br>
+						<p><strong>I'm Nur,</strong> maker of fine things that live on the interwebs.</p><br>
 						<ul class="home-menu">
-							<li><a href="{!! url('blog') !!}">Blog</a></li>
-							<li><a href="{!! url('about') !!}">About</a></li>
-							<li><a href="{!! url('contact') !!}">Contact</a></li>
+							<li><a href="{{ url('blog') }}" data-toggle="tooltip" title="Blog" data-placement="left"><i class="fa fa-bookmark"></i></a></li>
+							<li><a href="{{ url('about') }}" data-toggle="tooltip" title="About" data-placement="bottom"><i class="fa fa-user"></i></a></li>
+							<li><a href="{{ url('contact') }}" data-toggle="tooltip" title="Contact" data-placement="right"><i class="fa fa-map-marker"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -48,5 +46,10 @@
 		<script src="{!! asset('vendor/js/bootstrap.min.js') !!}"></script>
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
  		<script src="Hello World"></script>
+ 		<script>
+ 			$(function () {
+			  $('[data-toggle="tooltip"]').tooltip();
+			});
+ 		</script>
 	</body>
 </html>

@@ -12,7 +12,6 @@
 		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 		<!-- Font Awesome -->
 		<link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}">
-
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -31,14 +30,14 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Blog Template</a>
+					<a class="navbar-brand" href="{{ url('blog') }}"><img src="{{ asset('images/logo-blog-2.png') }}" alt="Image Logo" height="25px"></a>
 				</div>
 		
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="/">Home</a></li>
-						<li><a href="#">Blog</a></li>
+						<li><a href="{{ url('blog') }}">Blog</a></li>
 						<li><a href="#">About</a></li>
 						<li><a href="#">Contact</a></li>
 					</ul>
@@ -61,40 +60,31 @@
 				</div>
 				<div class="side">
 					<header>RECENT POSTS</header>
-					<div class="media">
-						<a class="pull-left" href="#">
-							<img class="media-object" src="images/profile.jpg" alt="Image" width="64px">
-						</a>
-						<div class="media-body">
-							<h4 class="media-heading"><a href="">Lorem ipsum dolor sit amet</a></h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit veniam labore debitis libero...</p>
+					@foreach($last_posts as $post)
+						<?php 
+						// Remove html tag from content 
+						$content = strip_tags($post->content);
+						$content = strlen($content) > 60 ? substr($content, 0, 60) . "..." : $content;
+						?>
+						<div class="media">
+							@if (!empty($post->image))
+								<a class="pull-left" href="{{ url('blog/'.$post->slug) }}">
+									<img class="media-object" src="{{ $post->image }}" alt="Image" width="64px">
+								</a>
+							@endif
+							<div class="media-body">
+								<h4 class="media-heading"><a href="{{ url('blog/'.$post->slug) }}">{{ $post->title }}</a></h4>
+								{!! $content !!}
+							</div>
 						</div>
-					</div>
-					<div class="media">
-						<a class="pull-left" href="#">
-							<img class="media-object" src="images/profile.jpg" alt="Image" width="64px">
-						</a>
-						<div class="media-body">
-							<h4 class="media-heading"><a href="">Lorem ipsum dolor sit amet</a></h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit veniam labore debitis libero...</p>
-						</div>
-					</div>
-					<div class="media">
-						<a class="pull-left" href="#">
-							<img class="media-object" src="images/profile.jpg" alt="Image" width="64px">
-						</a>
-						<div class="media-body">
-							<h4 class="media-heading"><a href="">Lorem ipsum dolor sit amet</a></h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit veniam labore debitis libero...</p>
-						</div>
-					</div>
+					@endforeach
 				</div>
 				<div class="side">
 					<header>CATEGORIES</header>
 					<div class="list-group side-list">
-						<a href="#" class="list-group-item">Hacking <span class="badge">4</span></a>
-						<a href="#" class="list-group-item">Laravel Tutorial <span class="badge">8</span></a>
-						<a href="#" class="list-group-item">Tips and Tricks <span class="badge">14</span></a>
+						@foreach ($categories as $category)
+							<a href="/search/category/{{ $category->slug }}" class="list-group-item">{{ $category->name }} <span class="badge">{{ $category->posts->count() }}</span></a>
+						@endforeach
 					</div>
 				</div>
 			</div>
@@ -108,10 +98,9 @@
 				</div>
 				<div class="col-md-4">
 					<header><h3>Tags</h3></header>
-					<a href="#" class="tag-item">Tutorial</a>
-					<a href="#" class="tag-item">Hacking</a>
-					<a href="#" class="tag-item">Computer</a>
-					<a href="#" class="tag-item">Sport</a>
+					@foreach ($tags as $tag)
+						<a href="/search/tag/{{ $tag->slug }}" class="tag-item">{{ $tag->name }}</a>
+					@endforeach
 				</div>
 				<div class="col-md-4">
 					<header><h3>Contact</h3></header>
@@ -119,6 +108,7 @@
 				</div>
 			</div>
 		</footer>
+		<script id="dsq-count-scr" src="//nursblog.disqus.com/count.js" async></script>
 		<!-- jQuery -->
 		<script src="{{ asset('vendor/js/jquery.min.js') }}"></script>
 		<!-- Bootstrap JavaScript -->

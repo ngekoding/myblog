@@ -75,7 +75,13 @@ article footer {
 	border-radius: 2px;
 	color: #263139;
 }
-
+.media-heading {
+	font-size: 15px;
+	font-weight: bold;
+}
+.media-heading a {
+	text-decoration: none;
+}
 /* footer */
 
 #footer {

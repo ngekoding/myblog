@@ -18,6 +18,7 @@ $(document).ready(function() {
 		    'searchreplace visualblocks code',
 		    'insertdatetime media table contextmenu paste code'
 		  ],
+		image_advtab: true,
 		file_browser_callback: function(field, url, type, win) {
 	        tinyMCE.activeEditor.windowManager.open({
 	            file: '../../vendor/kcfinder/browse.php?opener=tinymce4&field=' + field + '&type=' + type,
@@ -44,14 +45,14 @@ $(document).ready(function() {
 });
 
 function openKCFinder(field) {
-	    window.KCFinder = {
-	        callBack: function(url) {
-	            field.value = url;
-	            $(field).change();
-	            window.KCFinder = null;
-	        }
-	    };
-	    window.open('../../vendor/kcfinder/browse.php?type=image', 'kcfinder_textbox',
-	        'status=0, toolbar=0, location=0, menubar=0, directories=0, resizable=1, scrollbars=0, width=800, height=600'
-	    );
-	}
+    window.KCFinder = {
+        callBack: function(url) {
+            field.value = url;
+            $(field).change();
+            window.KCFinder = null;
+        }
+    };
+    window.open('../../vendor/kcfinder/browse.php?type=image', 'kcfinder_textbox',
+        'status=0, toolbar=0, location=0, menubar=0, directories=0, resizable=1, scrollbars=0, width=800, height=600'
+    );
+}

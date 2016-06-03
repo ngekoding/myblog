@@ -5,7 +5,7 @@ html, body {
 
 #home {
 	height: 100vh;
-	background: url('../images/iceland.jpg') center no-repeat;
+	background: url('../images/login-bg.jpg') center no-repeat;
 	color: #fff;
 }
 
@@ -36,17 +36,21 @@ html, body {
 
 .home-menu li {
 	display: inline;
-	margin: 0 2px;
+	margin: 0 5px;
 	text-align: center;
 }
 
 .home-menu li a {
 	text-decoration: none;
 	display: inline-block;
-	padding: 5px 15px;
+	height: 30px;
+	width: 30px;
+	padding-top: 5px;
 	color: #fff;
+	background: rgba(255, 255, 255, .5);
+	border-radius: 50%;
 }
 
 .home-menu li a:hover {
-	color: #3097D1;
+	color: #000;
 }

@@ -24,9 +24,9 @@
 					{{ Form::text('slug', Form::old('slug'), array('class' => 'form-control slug')) }}
 			    </div>
 			    <div class="form-group">
-			    	{{ Form::label('feature_image', 'Feature Image') }} <br>
+			    	{{ Form::label('image', 'Feature Image') }} <br>
 			    	<a class="btn btn-default" onclick="$('.feature-image').click()"><i class="fa fa-picture-o"></i></a>
-					{{ Form::hidden('feature_image', Form::old('feature_image'), array('class' => 'form-control feature-image', 'onclick' => 'openKCFinder(this)')) }}
+					{{ Form::hidden('image', Form::old('image'), array('class' => 'form-control feature-image', 'onclick' => 'openKCFinder(this)')) }}
 			    </div>
 			    <div class="feature-image-view"></div>
 				<div class="form-group">

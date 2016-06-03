@@ -42,7 +42,7 @@ class PostController extends Controller
         $post->slug = $request->slug;
         $post->author_id = auth()->user()->id;
         $post->content = $request->content;
-        $post->image = $request->feature_image;
+        $post->image = $request->image;
 
         $post->save();
         
@@ -73,7 +73,7 @@ class PostController extends Controller
         $post->slug = $request->slug;
         $post->author_id = auth()->user()->id;
         $post->content = $request->content;
-        $post->image = $request->feature_image;
+        $post->image = $request->image;
 
         $post->save();
 
