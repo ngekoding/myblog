@@ -31,19 +31,20 @@
 		<div class="container-fluid wrapper">
 			<div class="row">
 				<div class="col-md-2 col-md-pull-10 col-xs-3 col-xs-pull-9 sidebar no-mar-pad" style="position: fixed">
-					<header class="v-middle">Nur's Blog</header>
+					<header class="v-middle"><img src="{{ asset('images/logo-blog-2.png') }}" alt="Image Logo" height="30px"></header>
 					<div class="sidebar-box">
 						<nav>
 							<ul class="sidebar-menu">
-								<li><a href=""><i class="fa fa-dashboard fa-2x"></i> Dashboard</a></li>
-								@if (auth()->user()->hasRole('admin')))
+								<li><a href="{{ url('dashboard') }}"><i class="fa fa-dashboard fa-2x"></i> Dashboard</a></li>
+								@if (auth()->user()->hasRole('admin'))
 									<li><a href="{{ url('users') }}"><i class="fa fa-user fa-2x"></i> User</a></li>
-								@elseif(auth()->user()->hasRole('author')))
+								@endif
+								@if (auth()->user()->hasRole('author') || auth()->user()->hasRole('admin'))
 									<li><a href="{{ url('categories') }}"><i class="fa fa-bookmark-o fa-2x"></i> Category</a></li>
 									<li><a href="{{ url('tags') }}"><i class="fa fa-bookmark-o fa-2x"></i> Tag</a></li>
 								@endif
 								<li><a href="{{ url('posts') }}"><i class="fa fa-bookmark-o fa-2x"></i> Post</a></li>
-								<li><a href=""><i class="fa fa-cog fa-2x"></i> Settings</a></li>
+								<li><a href="{{ url('user/setting') }}"><i class="fa fa-cog fa-2x"></i> Settings</a></li>
 								<li><a href="{{ url('logout') }}"><i class="fa fa-sign-out fa-2x"></i> Logout</a></li>
 							</ul>
 						</nav>

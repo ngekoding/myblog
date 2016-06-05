@@ -8,23 +8,23 @@
 		<div class="col-md-6">
 			<div class="col-md-12 box">
 				<div class="page-header">
-					<h4>Add User</h4>
+					<h4>Edit User</h4>
 				</div>
 				
 				@include('common.errors')
 
-				{{ Form::open(['url' => 'users']) }}
+				{{ Form::model($user, array('route' => array('users.update', $user->id), 'method' => 'PUT')) }}
 					<div class="form-group">
 						{{ Form::label('name', 'Name') }}
-						{{ Form::text('name', Form::old('name'), array('class' => 'form-control')) }}
+						{{ Form::text('name', null, array('class' => 'form-control')) }}
 				    </div>
 				    <div class="form-group">
 						{{ Form::label('email', 'Email') }}
-						{{ Form::email('email', Form::old('email'), array('class' => 'form-control')) }}
+						{{ Form::email('email', null, array('class' => 'form-control')) }}
 				    </div>
 				    <div class="form-group">
 						{{ Form::label('password', 'Password') }}
-						{{ Form::password('password', array('class' => 'form-control')) }}
+						{{ Form::password('password', array('class' => 'form-control', 'placeholder' => 'Not change if empty')) }}
 				    </div>
 				    <div class="form-group">
 						{{ Form::label('password_confirmation', 'Confirm Password') }}
@@ -32,7 +32,7 @@
 				    </div>
 				    <div class="form-group">
 						{{ Form::label('role', 'Role') }}
-						{{ Form::select('roles[]', $roles, null, ['class' => 'form-control select2', 'multiple' => 'multiple']) }}
+						{!! Form::select('roles[]', $roles, $user->roles->lists('id')->toArray(), ['class' => 'form-control select2', 'multiple' => 'multiple']) !!}
 				    </div>
 				    <div class="form-group">
 						{{ Form::submit('Submit', array('class' => 'btn btn-success')) }}
@@ -46,7 +46,6 @@
 				@include('admin.users.lists')
 
 			</div>
-			{!! $users->links() !!}
 		</div>
 	</div>
 

@@ -38,8 +38,8 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="/">Home</a></li>
 						<li><a href="{{ url('blog') }}">Blog</a></li>
-						<li><a href="#">About</a></li>
-						<li><a href="#">Contact</a></li>
+						<li><a href="{{ url('about') }}">About</a></li>
+						<li><a href="{{ url('contact') }}">Contact</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div>
@@ -94,7 +94,8 @@
 			<div class="container">
 				<div class="col-md-4">
 					<header><h3>About</h3></header>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae vero harum dolor architecto omnis consectetur debitis tenetur vel mollitia illo ducimus, ipsam, aspernatur a quo eum atque eveniet inventore sapiente.</p>
+					<h4>I am Nur Muhammad</h4>
+					<p>Someone who will create a <i>beautifull website</i> for your bussiness.</p>
 				</div>
 				<div class="col-md-4">
 					<header><h3>Tags</h3></header>

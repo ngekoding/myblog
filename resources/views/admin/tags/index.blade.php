@@ -16,11 +16,7 @@
 				{{ Form::open(array('url' => 'tags')) }}
 					<div class="form-group">
 						{{ Form::label('name', 'Name') }}
-						{{ Form::text('name', Form::old('name'), array('class' => 'form-control title-slug')) }}
-				    </div>
-				    <div class="form-group">
-						{{ Form::label('slug', 'Slug') }}
-						{{ Form::text('slug', Form::old('slug'), array('class' => 'form-control slug')) }}
+						{{ Form::text('name', Form::old('name'), array('class' => 'form-control')) }}
 				    </div>
 				    <div class="form-group">
 						{{ Form::label('description', 'Description') }}
@@ -38,6 +34,7 @@
 				@include('admin.tags.lists')
 
 			</div>
+			{!! $tags->links() !!}
 		</div>
 	</div>
 

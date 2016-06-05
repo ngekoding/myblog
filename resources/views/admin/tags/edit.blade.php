@@ -17,11 +17,7 @@
 				{{ Form::model($tag, array('route' => array('tags.update', $tag->id), 'method' => 'PUT')) }}
 					<div class="form-group">
 						{{ Form::label('name', 'Name') }}
-						{{ Form::text('name', null, array('class' => 'form-control title-slug')) }}
-				    </div>
-				    <div class="form-group">
-						{{ Form::label('slug', 'Slug') }}
-						{{ Form::text('slug', null, array('class' => 'form-control slug')) }}
+						{{ Form::text('name', null, array('class' => 'form-control')) }}
 				    </div>
 				    <div class="form-group">
 						{{ Form::label('description', 'Description') }}

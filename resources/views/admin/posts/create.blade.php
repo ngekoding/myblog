@@ -17,11 +17,7 @@
 
 			    <div class="form-group">
 			    	{{ Form::label('title', 'Title') }}
-					{{ Form::text('title', Form::old('title'), array('class' => 'form-control title-slug')) }}
-			    </div>
-			    <div class="form-group">
-			    	{{ Form::label('slug', 'Slug') }}
-					{{ Form::text('slug', Form::old('slug'), array('class' => 'form-control slug')) }}
+					{{ Form::text('title', Form::old('title'), array('class' => 'form-control')) }}
 			    </div>
 			    <div class="form-group">
 			    	{{ Form::label('image', 'Feature Image') }} <br>

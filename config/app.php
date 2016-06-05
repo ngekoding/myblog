@@ -149,6 +149,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+        'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 
         /*
          * Application Service Providers...

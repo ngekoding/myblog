@@ -20,9 +20,9 @@ class PostController extends Controller
 {
     public function index() {
         if (auth()->user()->hasRole('admin')) {
-            $posts = Post::all();
+            $posts = Post::paginate(10);
         } else {
-            $posts = Post::where('author_id', auth()->user()->id);
+            $posts = Post::where('author_id', auth()->user()->id)->paginate(10);
         }
 
     	return view('admin.posts.index', compact('posts'));
@@ -38,8 +38,8 @@ class PostController extends Controller
     public function store(PostRequest $request) {
         
         $post = new Post();
+
         $post->title = $request->title;
-        $post->slug = $request->slug;
         $post->author_id = auth()->user()->id;
         $post->content = $request->content;
         $post->image = $request->image;
@@ -70,7 +70,6 @@ class PostController extends Controller
         $post = Post::find($id);
 
         $post->title = $request->title;
-        $post->slug = $request->slug;
         $post->author_id = auth()->user()->id;
         $post->content = $request->content;
         $post->image = $request->image;

@@ -4,15 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
-{
-    protected $fillable = ['title', 'slug', 'content', 'image', 'author_id'];
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 
-    public static $rules = [
-    	'title' 	=> 'required|min:3', 
-    	'slug' 		=> 'required',
-    	'content' 	=> 'required'
+class Post extends Model implements SluggableInterface
+{
+    use SluggableTrait;
+
+    protected $sluggable = [
+        'build_from'=> 'title',
+        'save_to'   => 'slug'
     ];
+
+    protected $fillable = ['title', 'slug', 'content', 'image', 'author_id'];
 
     public function categories() {
     	return $this->belongsToMany('App\Category');

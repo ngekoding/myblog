@@ -16,7 +16,7 @@ use Alert;
 class TagController extends Controller
 {
     public function index() {
-    	$tags = Tag::all();
+    	$tags = Tag::paginate(10);
         
     	return view('admin.tags.index', ['tags' => $tags]);
     }
@@ -30,7 +30,6 @@ class TagController extends Controller
 		$tag = new Tag();
 		
 		$tag->name = $request->name;
-		$tag->slug = $request->slug;
 		$tag->description = $request->description;
 
 		$tag->save();

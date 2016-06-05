@@ -16,7 +16,7 @@ use Alert;
 class CategoryController extends Controller
 {
     public function index() {
-    	$categories = Category::all();
+    	$categories = Category::paginate(10);
 
     	return view('admin.categories.index', ['categories' => $categories]);
     }
@@ -30,7 +30,6 @@ class CategoryController extends Controller
 		$category = new Category();
 		
 		$category->name = $request->name;
-		$category->slug = $request->slug;
 		$category->description = $request->description;
 
 		$category->save();

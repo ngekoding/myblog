@@ -19,10 +19,6 @@
 						{{ Form::text('name', Form::old('name'), array('class' => 'form-control title-slug')) }}
 				    </div>
 				    <div class="form-group">
-						{{ Form::label('slug', 'Slug') }}
-						{{ Form::text('slug', Form::old('slug'), array('class' => 'form-control slug')) }}
-				    </div>
-				    <div class="form-group">
 						{{ Form::label('description', 'Description') }}
 						{{ Form::textarea('description', Form::old('desc'), array('class' => 'form-control', 'rows' => '3')) }}
 				    </div>
@@ -38,6 +34,7 @@
 				@include('admin.categories.lists')
 
 			</div>
+			{!! $categories->links() !!}
 		</div>
 	</div>
 

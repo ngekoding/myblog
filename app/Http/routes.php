@@ -11,17 +11,35 @@
 |
 */
 
+/*
+ * Public routes
+ */
+
 Route::get('/', 'BlogController@index');
 Route::get('/blog', 'BlogController@showPost');
-Route::get('/contact', 'BlogController@showContact');
 Route::get('/blog/{slug}', 'BlogController@showPostDetail');
+Route::get('/about', 'BlogController@showAbout');
+Route::get('/contact', 'BlogController@showContact');
+Route::post('/contact', 'BlogController@sendEmail');
+
+/*
+ * Auth routes
+ */
 
 Route::auth();
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::get('dashboard', function() {
-		return "Welcome to dashboard";
+		$posts = App\Post::take(5)->get();
+		$users = App\User::paginate(10);
+
+		return view('admin.dashboard.index', compact('posts', 'users'));
 	});
+	Route::resource('posts', 'PostController');
+	
+	Route::get('user/setting', 'UserController@setting');
+	Route::put('user/setting', ['as' => 'user.setting', 'uses' => 'UserController@settingUpdate']);
+
 	Route::group(['middleware' => ['role:admin']], function() {
 		Route::resource('users', 'UserController');
 	});
@@ -29,5 +47,4 @@ Route::group(['middleware' => ['auth']], function () {
 		Route::resource('categories', 'CategoryController');
 		Route::resource('tags', 'TagController');
 	});
-	Route::resource('posts', 'PostController');
 });

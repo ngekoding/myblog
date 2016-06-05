@@ -25,7 +25,6 @@ class PostRequest extends Request
     {
         return [
             'title'     => 'required|min:3', 
-            'slug'      => 'required',
             'content'   => 'required'
         ];
     }
