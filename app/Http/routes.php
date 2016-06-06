@@ -16,8 +16,11 @@
  */
 
 Route::get('/', 'BlogController@index');
+Route::get('/blog/search', ['uses' => 'BlogController@search', 'as' => 'blog.search']);
 Route::get('/blog', 'BlogController@showPost');
 Route::get('/blog/{slug}', 'BlogController@showPostDetail');
+Route::get('/blog/search/category/{category}', 'BlogController@searchByCategory');
+Route::get('/blog/search/tag/{tag}', 'BlogController@searchByTag');
 Route::get('/about', 'BlogController@showAbout');
 Route::get('/contact', 'BlogController@showContact');
 Route::post('/contact', 'BlogController@sendEmail');
@@ -30,7 +33,7 @@ Route::auth();
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::get('dashboard', function() {
-		$posts = App\Post::take(5)->get();
+		$posts = auth()->user()->hasRole('admin') ? App\Post::take(5)->get() : App\Post::where('author_id', auth()->user()->id)->take(5)->get();
 		$users = App\User::paginate(10);
 
 		return view('admin.dashboard.index', compact('posts', 'users'));

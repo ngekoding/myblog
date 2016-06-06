@@ -4,6 +4,14 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		@if ($uri == 'blog_detail')
+			@yield('meta')
+		@else
+		<meta property="og:url" content="{{ url($uri) }}" />
+		<meta property="og:title" content="Nur's Blog" />
+		<meta property="og:description" content="Maker of fine things that live on the interwebs." />
+		<meta property="og:image" content="{{ url('images/logo-blog-2.png') }}" />
+		@endif
 		<title>Nur's Blog</title>
 
 		<!-- Bootstrap CSS -->
@@ -20,6 +28,7 @@
 		<![endif]-->
 	</head>
 	<body>
+
 		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="container">
 				<!-- Brand and toggle get grouped for better mobile display -->
@@ -54,9 +63,9 @@
 			<div class="col-md-4">
 				<div class="side">
 					<header>SEARCH</header>
-					<form action="" method="get" class="form-search">
-						<input type="search" name="q" id="q" placeholder="Keywords...">
-					</form>
+					{{ Form::open(['route' => 'blog.search', 'method' => 'GET', 'class' => 'form-search']) }}
+						<input type="search" name="q" placeholder="Keywords...">
+					{{ Form::close() }}
 				</div>
 				<div class="side">
 					<header>RECENT POSTS</header>
@@ -65,11 +74,16 @@
 						// Remove html tag from content 
 						$content = strip_tags($post->content);
 						$content = strlen($content) > 60 ? substr($content, 0, 60) . "..." : $content;
+						// Get first image from content
+						preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $post->content, $image);
+						if (empty($image)) {
+							$image['src'] = '';
+						}
 						?>
 						<div class="media">
-							@if (!empty($post->image))
+							@if (!empty($post->image) OR !empty($image['src']))
 								<a class="pull-left" href="{{ url('blog/'.$post->slug) }}">
-									<img class="media-object" src="{{ $post->image }}" alt="Image" width="64px">
+									<img class="media-object" src="{{ !empty($post->image) ? $post->image : $image['src'] }}" alt="Image" width="64px">
 								</a>
 							@endif
 							<div class="media-body">
@@ -83,7 +97,7 @@
 					<header>CATEGORIES</header>
 					<div class="list-group side-list">
 						@foreach ($categories as $category)
-							<a href="/search/category/{{ $category->slug }}" class="list-group-item">{{ $category->name }} <span class="badge">{{ $category->posts->count() }}</span></a>
+							<a href="{{ url('blog/search/category/'.$category->slug) }}" class="list-group-item">{{ $category->name }} <span class="badge">{{ $category->posts->count() }}</span></a>
 						@endforeach
 					</div>
 				</div>
@@ -95,17 +109,20 @@
 				<div class="col-md-4">
 					<header><h3>About</h3></header>
 					<h4>I am Nur Muhammad</h4>
-					<p>Someone who will create a <i>beautifull website</i> for your bussiness.</p>
+					<p>Someone who will create a <b>beautifull website</b> for your bussiness.</p>
 				</div>
 				<div class="col-md-4">
 					<header><h3>Tags</h3></header>
 					@foreach ($tags as $tag)
-						<a href="/search/tag/{{ $tag->slug }}" class="tag-item">{{ $tag->name }}</a>
+						<a href="{{ url('blog/search/tag/'.$tag->slug) }}" class="tag-item">{{ $tag->name }}</a>
 					@endforeach
 				</div>
 				<div class="col-md-4">
 					<header><h3>Contact</h3></header>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus vel quas, mollitia et pariatur reprehenderit nesciunt adipisci modi totam consectetur fugiat at delectus dolorum corrupti veniam distinctio nam corporis, cumque.</p>
+					<p>To keep communication, you can find me on Facebook, Twitter or sending me an e-mail.</p>
+					<a href="https://www.facebook.com/about.nurmuhammad" target="_blank"><i class="fa fa-facebook fa-lg"></i></a>
+					<a href="https://www.twitter.com/websiternewbie" target="_blank"><i class="fa fa-twitter fa-lg"></i></a>
+					<a href="{{ url('contact') }}"><i class="fa fa-google-plus fa-lg"></i></a>
 				</div>
 			</div>
 		</footer>
@@ -114,7 +131,11 @@
 		<script src="{{ asset('vendor/js/jquery.min.js') }}"></script>
 		<!-- Bootstrap JavaScript -->
 		<script src="{{ asset('vendor/js/bootstrap.min.js') }}"></script>
+		<!-- Custom js -->
+		<script src="{{ asset('js/blog.js') }}"></script>
 		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
  		<script src="Hello World"></script>
+ 		<!-- Go to www.addthis.com/dashboard to customize your tools -->
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5754afdfd7897c7d"></script>
 	</body>
 </html>

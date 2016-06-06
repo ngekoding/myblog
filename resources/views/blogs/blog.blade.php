@@ -22,9 +22,7 @@
 					<a href="{{ url('search/category/'.$category->slug) }}">{{ $category->name }}</a> &nbsp; 
 				@endforeach
 				<span class="pull-right">
-					<i class="fa fa-comment"></i> <a href="{{ url('blog/'.$post->slug) . '#disqus_thread' }}" data-disqus-identifier="{{ $post->slug }}">Comments</a> &nbsp;
-					<a href="#" title="Share to Facebook"><i class="fa fa-facebook-square"></i> </a>
-					<a href="#" title="Share to Twitter"> <i class="fa fa-twitter-square"></i></a>
+					<i class="fa fa-comment"></i> <a href="{{ url('blog/'.$post->slug) . '#disqus_thread' }}" data-disqus-identifier="{{ $post->slug }}">Comments</a>
 				</span>
 			</footer>
 		</article>

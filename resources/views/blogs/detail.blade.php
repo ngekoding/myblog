@@ -1,5 +1,24 @@
 @extends('layouts.master')
 
+@if (!empty($post))
+	@section('meta')
+		<?php
+		// Remove html tag from content 
+		$content = strip_tags($post->content);
+		if (!empty($post->image)) {
+			$featureImg = $post->image;
+		} else {
+			preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $post->content, $image);
+			$image['src'] = !empty($image) ? url($image['src']) : '';
+		}
+		?>
+		<meta property="og:url" content="{{ url('blog/'.$post->slug) }}" />
+		<meta property="og:title" content="{{ $post->title }}" />
+		<meta property="og:description" content="{!! strlen($content) > 150 ? substr($content, 0, 150) . '...' : $content !!}" />
+		<meta property="og:image" content="{{ !empty($featureImg) ? url($featureImg) : $image['src'] }}" />
+	@endsection
+@endif
+
 @section('content')
 
 	@if (!empty($post))
@@ -10,11 +29,6 @@
 					<i class="fa fa-calendar"></i>  {{ $post->created_at }} &nbsp; <i class="fa fa-user"></i> {{ $post->author->name }}
 				</p>
 			</header>
-			<?php
-			// Remove html tag from content 
-			$content = strip_tags($post->content);
-			$content = strlen($content) > 100 ? substr($content, 0, 100) . "..." : $content;
-			?>
 			{!! $post->content !!}
 			<footer>
 				<i class="fa fa-folder"></i> &nbsp;
@@ -22,10 +36,7 @@
 					<a href="{{ url('search/category/'.$category->slug) }}">{{ $category->name }}</a> &nbsp; 
 				@endforeach
 				<span class="pull-right">
-					<i class="fa fa-comment"></i> <a href="{{ url('blog/'.$post->slug) . '#disqus_thread' }}" data-disqus-identifier="{{ $post->slug }}">Comments</a> &nbsp;
-					<a onClick="window.open('http://www.facebook.com/sharer.php?s=100&amp;p[title]={{ $post->title }}&amp;p[summary]={{ $content }}&amp;p[url]={{ url('blog/'.$post->slug) }}', 'sharer', 'toolbar=0,status=0,width=550,height=400');" target="_parent" href="javascript: void(0)"><i class="fa fa-facebook-square"></i></a>
-					<a href="#" title="Share to Facebook"><i class="fa fa-facebook-square"></i> </a>
-					<a href="#" title="Share to Twitter"> <i class="fa fa-twitter-square"></i></a>
+					<i class="fa fa-comment"></i> <a href="{{ url('blog/'.$post->slug) . '#disqus_thread' }}" data-disqus-identifier="{{ $post->slug }}">Comments</a>
 				</span>
 			</footer>
 		</article>

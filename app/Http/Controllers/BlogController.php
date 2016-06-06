@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Illuminate\Support\Facades\Route;
+
 use Validator;
 
 use App\Post;
@@ -25,46 +27,58 @@ class BlogController extends Controller
         $this->tags = Tag::all();
     }
 
+    private function getRouteName() {
+        return Route::getFacadeRoot()->current()->uri();
+    }
+
     public function showPost() {
-        $posts = Post::orderBy('created_at', 'desc')->simplePaginate(5);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
+        
         $this->getBlogSidebarContent();
 
-    	return view('blogs.blog', [
-            'posts' => $posts, 
-            'categories' => $this->categories, 
-            'tags' => $this->tags, 
-            'last_posts' => $this->last_posts
-        ]);
+        $categories = $this->categories;
+        $tags = $this->tags;
+        $last_posts = $this->last_posts;
+        $uri = $this->getRouteName();
+
+    	return view('blogs.blog', compact('posts', 'categories', 'tags', 'last_posts', 'uri'));
     }
 
     public function showPostDetail($slug) {
         $post = Post::where('slug', $slug)->first();
+        
         $this->getBlogSidebarContent();
 
-    	return view('blogs.detail', [
-            'post' => $post, 
-            'categories' => $this->categories, 
-            'tags' => $this->tags, 
-            'last_posts' => $this->last_posts
-        ]);
+        $categories = $this->categories;
+        $tags = $this->tags;
+        $last_posts = $this->last_posts;
+        $uri = $this->getRouteName();
+
+    	return view('blogs.detail', compact('posts', 'categories', 'tags', 'last_posts', 'uri'));
     }
 
     public function showAbout() {
         $this->getBlogSidebarContent();
-        return view('blogs.about', [
-            'categories' => $this->categories, 
-            'tags' => $this->tags, 
-            'last_posts' => $this->last_posts
-        ]);
+
+
+        $categories = $this->categories;
+        $tags = $this->tags;
+        $last_posts = $this->last_posts;
+        $uri = $this->getRouteName();
+
+        return view('blogs.about', compact('posts', 'categories', 'tags', 'last_posts', 'uri'));
     }
 
     public function showContact() {
     	$this->getBlogSidebarContent();
-        return view('blogs.contact', [
-            'categories' => $this->categories, 
-            'tags' => $this->tags, 
-            'last_posts' => $this->last_posts
-        ]);
+
+
+        $categories = $this->categories;
+        $tags = $this->tags;
+        $last_posts = $this->last_posts;
+        $uri = $this->getRouteName();
+
+        return view('blogs.contact', compact('posts', 'categories', 'tags', 'last_posts', 'uri'));
     }
 
     public function sendEmail(Request $request) {
@@ -81,11 +95,33 @@ class BlogController extends Controller
                 ->withInput();
         }
         $header = "From: $request->name <$request->email>";
-        @mail('about.nurmuhammad@gmail.com', $request->subject, $request->message, $header);
-
-        if (@mail) {
+        
+        if (@mail('blog.nurmuhammad@gmail.com', $request->subject, $request->message, $header)) {
             return redirect('contact', ['success' => 'Successfully sent your message.']);
         }
         return redirect('contact');
+    }
+
+    public function search() {
+        $keyword = \Request::get('q');
+        $posts = Post::where('title', 'LIKE', '%'.$keyword.'%')->paginate(5);
+        $posts->appends(\Request::only('q'))->links();
+        
+        $this->getBlogSidebarContent();
+
+        $categories = $this->categories;
+        $tags = $this->tags;
+        $last_posts = $this->last_posts;
+        $uri = $this->getRouteName();
+
+        return view('blogs.search', compact('posts', 'categories', 'tags', 'last_posts', 'uri'));
+    }
+
+    public function searchByCategory($keyword) {
+        $posts = Post::has('categories', Category::findBySlug($keyword)->first()->id)->get();
+    }
+
+    public function searchByTag($keyword) {
+        return $keyword;
     }
 }
