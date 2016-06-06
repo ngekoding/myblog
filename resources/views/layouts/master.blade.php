@@ -13,6 +13,7 @@
 		<meta property="og:image" content="{{ url('images/logo-blog-2.png') }}" />
 		@endif
 		<title>Nur's Blog</title>
+		<link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="{{ asset('vendor/css/bootstrap.min.css') }}">
