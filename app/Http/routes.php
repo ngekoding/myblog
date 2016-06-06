@@ -18,9 +18,8 @@
 Route::get('/', 'BlogController@index');
 Route::get('/blog/search', ['uses' => 'BlogController@search', 'as' => 'blog.search']);
 Route::get('/blog', 'BlogController@showPost');
+Route::get('/blog/search/{type}/{keyword}', 'BlogController@searchBy');
 Route::get('/blog/{slug}', 'BlogController@showPostDetail');
-Route::get('/blog/search/category/{category}', 'BlogController@searchByCategory');
-Route::get('/blog/search/tag/{tag}', 'BlogController@searchByTag');
 Route::get('/about', 'BlogController@showAbout');
 Route::get('/contact', 'BlogController@showContact');
 Route::post('/contact', 'BlogController@sendEmail');

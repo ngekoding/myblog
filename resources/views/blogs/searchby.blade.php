@@ -5,7 +5,7 @@
 	@if ($posts->total() > 0)
 		<article>
 			<header>
-				<h3>Found {{ $posts->total() }} {{ $posts->total() > 1 ? 'posts' : 'post' }}  for keyword <b>{{ '"'.\Request::get('q').'"' }}</b></h3>
+				<h3>Found {{ $posts->total() }} {{ $posts->total() > 1 ? 'posts' : 'post' }}  for {{ $type }} <b>{{ '"'.$keywordName->name.'"' }}</b></h3>
 			</header>
 		</article>
 		@foreach($posts as $post)

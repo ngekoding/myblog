@@ -54,7 +54,7 @@ class BlogController extends Controller
         $last_posts = $this->last_posts;
         $uri = $this->getRouteName();
 
-    	return view('blogs.detail', compact('posts', 'categories', 'tags', 'last_posts', 'uri'));
+    	return view('blogs.detail', compact('post', 'categories', 'tags', 'last_posts', 'uri'));
     }
 
     public function showAbout() {
@@ -117,11 +117,29 @@ class BlogController extends Controller
         return view('blogs.search', compact('posts', 'categories', 'tags', 'last_posts', 'uri'));
     }
 
-    public function searchByCategory($keyword) {
-        $posts = Post::has('categories', Category::findBySlug($keyword)->first()->id)->get();
+    public function searchBy($type, $keyword) {
+        if ($type == 'tag') {
+            $keywordName = Tag::where('slug', $keyword)->first();
+            if (empty($keywordName)) return abort(404);
+            $posts = Post::whereHas('tags', function ($q) use ($keyword) {
+                $q->where('tags.slug', '=', $keyword);
+            })->paginate(5);
+        } else {
+            $keywordName = Category::where('slug', $keyword)->first();
+            if (empty($keywordName)) return abort(404);
+            $posts = Post::whereHas('categories', function ($q) use ($keyword) {
+                $q->where('categories.slug', '=', $keyword);
+            })->paginate(5);
+        }
+
+        $this->getBlogSidebarContent();
+
+        $categories = $this->categories;
+        $tags = $this->tags;
+        $last_posts = $this->last_posts;
+        $uri = $this->getRouteName();
+
+        return view('blogs.searchby', compact('posts', 'categories', 'tags', 'last_posts', 'type', 'keywordName','uri'));
     }
 
-    public function searchByTag($keyword) {
-        return $keyword;
-    }
 }

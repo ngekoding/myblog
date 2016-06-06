@@ -39,7 +39,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="{{ url('blog') }}"><img src="{{ asset('images/logo-blog-2.png') }}" alt="Image Logo" height="25px"></a>
+					<a class="navbar-brand" href="/"><img src="{{ asset('images/logo-blog-2.png') }}" alt="Image Logo" height="25px"></a>
 				</div>
 		
 				<!-- Collect the nav links, forms, and other content for toggling -->
