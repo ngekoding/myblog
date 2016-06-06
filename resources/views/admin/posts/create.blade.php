@@ -27,7 +27,7 @@
 			    <div class="feature-image-view"></div>
 				<div class="form-group">
 					{{ Form::label('content', 'Content') }}
-					{{ Form::textarea('content', Form::old('content'), array('class' => 'form-control tiny')) }}
+					<textarea name="content" class="form-control tiny"><?=htmlentities(Form::old('content'))?></textarea>
 				</div>
 				<div class="form-group col-md-6 no-padding-left">
 					{{ Form::label('category', 'Category') }}

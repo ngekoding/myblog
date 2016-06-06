@@ -31,7 +31,7 @@
 			    </div>
 				<div class="form-group">
 					{{ Form::label('content', 'Content') }}
-					{{ Form::textarea('content', null, array('class' => 'form-control tiny')) }}
+					<textarea name="content" class="form-control tiny"><?=htmlentities($post->content)?></textarea>
 				</div>
 				<div class="form-group col-md-6 no-padding-left">
 					{{ Form::label('category', 'Category') }}
