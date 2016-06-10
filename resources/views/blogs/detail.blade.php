@@ -35,7 +35,7 @@
 					}
 					$categoryList = rtrim($categoryList, ', '); 
 					?>
-					{!! $categoryList !!}
+					{!! !empty($categoryList) ? $categoryList : 'Uncategorized' !!}
 				</p>
 			</header>
 			{!! $post->content !!}
@@ -48,7 +48,7 @@
 				}
 				$tagList = rtrim($tagList, ', '); 
 				?>
-				{!! $tagList !!}
+				{!! !empty($tagList) ? $tagList : 'Untagged' !!}
 				<span class="pull-right">
 					<i class="fa fa-comment"></i> <a href="{{ url('blog/'.$post->slug) . '#disqus_thread' }}" data-disqus-identifier="{{ $post->slug }}">Comments</a>
 				</span>

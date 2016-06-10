@@ -1,3 +1,5 @@
+<script type="text/javascript">
+
 $(document).ready(function() {
 	$('.select2').select2();
 
@@ -13,7 +15,6 @@ $(document).ready(function() {
 	tinymce.init({
 	    selector: '.tiny',
 	    height: 300,
-	    relative_urls: false,
 	    plugins: [
 		    'advlist autolink lists link image charmap preview anchor',
 		    'searchreplace visualblocks code',
@@ -22,7 +23,8 @@ $(document).ready(function() {
 		image_advtab: true,
 		file_browser_callback: function(field, url, type, win) {
 	        tinyMCE.activeEditor.windowManager.open({
-	            file: '../../vendor/kcfinder/browse.php?opener=tinymce4&field=' + field + '&type=' + type,
+	            // file: '../../vendor/kcfinder/browse.php?opener=tinymce4&field=' + field + '&type=' + type,
+	            file: {{ asset('/') }}'vendor/kcfinder/browse.php?opener=tinymce4&field=' + field + '&type=' + type,
 	            title: 'KCFinder',
 	            width: 700,
 	            height: 500,
@@ -57,3 +59,5 @@ function openKCFinder(field) {
         'status=0, toolbar=0, location=0, menubar=0, directories=0, resizable=1, scrollbars=0, width=800, height=600'
     );
 }
+
+</script>

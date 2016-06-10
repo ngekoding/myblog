@@ -104,7 +104,7 @@ class BlogController extends Controller
 
     public function search() {
         $keyword = \Request::get('q');
-        $posts = Post::where('title', 'LIKE', '%'.$keyword.'%')->paginate(5);
+        $posts = Post::where('title', 'LIKE', '%'.$keyword.'%')->orWhere('content', 'LIKE', '%'.$keyword.'%')->paginate(5);
         $posts->appends(\Request::only('q'))->links();
         
         $this->getBlogSidebarContent();
