@@ -7,10 +7,10 @@
 		@if ($uri == 'blog_detail')
 			@yield('meta')
 		@else
-		<meta property="og:url" content="{{ url($uri) }}" />
-		<meta property="og:title" content="Nur's Blog" />
-		<meta property="og:description" content="Maker of fine things that live on the interwebs." />
-		<meta property="og:image" content="{{ url('images/logo-blog-2.png') }}" />
+			<meta property="og:url" content="{{ url($uri) }}" />
+			<meta property="og:title" content="Nur's Blog" />
+			<meta property="og:description" content="Maker of fine things that live on the interwebs." />
+			<meta property="og:image" content="{{ url('images/logo-blog-2.png') }}" />
 		@endif
 		<title>Nur's Blog</title>
 		<link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">

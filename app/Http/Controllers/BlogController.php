@@ -17,6 +17,14 @@ use App\Tag;
 class BlogController extends Controller
 {
 
+    protected $last_posts;
+    protected $categories;
+    protected $tags;
+
+    public function __construct() {
+        $this->getBlogSidebarContent();
+    }
+
     public function index() {
     	return view('blogs.index');
     }
@@ -33,52 +41,48 @@ class BlogController extends Controller
 
     public function showPost() {
         $posts = Post::orderBy('created_at', 'desc')->paginate(5);
-        
-        $this->getBlogSidebarContent();
-
-        $categories = $this->categories;
-        $tags = $this->tags;
-        $last_posts = $this->last_posts;
         $uri = $this->getRouteName();
 
-    	return view('blogs.blog', compact('posts', 'categories', 'tags', 'last_posts', 'uri'));
+    	return view('blogs.blog', compact('posts', 'uri'))
+            ->with([
+                'last_posts' => $this->last_posts, 
+                'categories' => $this->categories, 
+                'tags' => $this->tags
+            ]);
     }
 
     public function showPostDetail($slug) {
         $post = Post::where('slug', $slug)->first();
-        
-        $this->getBlogSidebarContent();
-
-        $categories = $this->categories;
-        $tags = $this->tags;
-        $last_posts = $this->last_posts;
         $uri = $this->getRouteName();
 
-    	return view('blogs.detail', compact('post', 'categories', 'tags', 'last_posts', 'uri'));
+    	return view('blogs.detail', compact('post', 'uri'))
+            ->with([
+                'last_posts' => $this->last_posts, 
+                'categories' => $this->categories, 
+                'tags' => $this->tags
+            ]);
     }
 
     public function showAbout() {
-        $this->getBlogSidebarContent();
-
-
-        $categories = $this->categories;
-        $tags = $this->tags;
-        $last_posts = $this->last_posts;
         $uri = $this->getRouteName();
 
-        return view('blogs.about', compact('posts', 'categories', 'tags', 'last_posts', 'uri'));
+        return view('blogs.about', compact('posts', 'uri'))
+            ->with([
+                'last_posts' => $this->last_posts, 
+                'categories' => $this->categories, 
+                'tags' => $this->tags
+            ]);
     }
 
     public function showContact() {
-    	$this->getBlogSidebarContent();
-
-
-        $categories = $this->categories;
-        $tags = $this->tags;
-        $last_posts = $this->last_posts;
         $uri = $this->getRouteName();
 
-        return view('blogs.contact', compact('posts', 'categories', 'tags', 'last_posts', 'uri'));
+        return view('blogs.contact', compact('posts', 'uri'))
+            ->with([
+                'last_posts' => $this->last_posts, 
+                'categories' => $this->categories, 
+                'tags' => $this->tags
+            ]);
     }
 
     public function sendEmail(Request $request) {
@@ -107,14 +111,14 @@ class BlogController extends Controller
         $posts = Post::where('title', 'LIKE', '%'.$keyword.'%')->orWhere('content', 'LIKE', '%'.$keyword.'%')->paginate(5);
         $posts->appends(\Request::only('q'))->links();
         
-        $this->getBlogSidebarContent();
-
-        $categories = $this->categories;
-        $tags = $this->tags;
-        $last_posts = $this->last_posts;
         $uri = $this->getRouteName();
 
-        return view('blogs.search', compact('posts', 'categories', 'tags', 'last_posts', 'uri'));
+        return view('blogs.search', compact('posts', 'uri'))
+            ->with([
+                'last_posts' => $this->last_posts, 
+                'categories' => $this->categories, 
+                'tags' => $this->tags
+            ]);
     }
 
     public function searchBy($type, $keyword) {
@@ -132,14 +136,14 @@ class BlogController extends Controller
             })->paginate(5);
         }
 
-        $this->getBlogSidebarContent();
-
-        $categories = $this->categories;
-        $tags = $this->tags;
-        $last_posts = $this->last_posts;
         $uri = $this->getRouteName();
 
-        return view('blogs.searchby', compact('posts', 'categories', 'tags', 'last_posts', 'type', 'keywordName','uri'));
+        return view('blogs.searchby', compact('posts', 'type', 'keywordName','uri'))
+            ->with([
+                'last_posts' => $this->last_posts, 
+                'categories' => $this->categories, 
+                'tags' => $this->tags
+            ]);
     }
 
 }
