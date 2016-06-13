@@ -104,8 +104,8 @@ class BlogController extends Controller
         }
         $header = "From: $request->name <$request->email>";
         
-        if (@mail('blog.nurmuhammad@gmail.com', $request->subject, $request->message, $header) == 1) {
-            return redirect('contact', ['success' => 'Successfully sent your message.']);
+        if (@mail('blog.nurmuhammad@gmail.com', $request->subject, $request->message, $header)) {
+            return redirect('contact')->with('success', 'Successfully sent your message.');
         }
         return redirect('contact');
     }
