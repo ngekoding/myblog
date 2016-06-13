@@ -35,15 +35,10 @@ class BlogController extends Controller
         $this->tags = Tag::all();
     }
 
-    private function getRouteName() {
-        return Route::getFacadeRoot()->current()->uri();
-    }
-
     public function showPost() {
         $posts = Post::orderBy('created_at', 'desc')->paginate(5);
-        $uri = $this->getRouteName();
 
-    	return view('blogs.blog', compact('posts', 'uri'))
+    	return view('blogs.blog', compact('posts'))
             ->with([
                 'last_posts' => $this->last_posts, 
                 'categories' => $this->categories, 
@@ -53,9 +48,20 @@ class BlogController extends Controller
 
     public function showPostDetail($slug) {
         $post = Post::where('slug', $slug)->first();
-        $uri = $this->getRouteName();
 
-    	return view('blogs.detail', compact('post', 'uri'))
+        preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $post->content, $image);
+        if (empty($image)) {
+            $image['src'] = '';
+        }
+        $img = !empty($post->image) ? $post->image : $image['src'];
+
+        $meta = [
+            'title' => $post->title,
+            'description' => strip_tags($post->content),
+            'image' => $img
+        ];
+
+    	return view('blogs.detail', compact('post', 'meta'))
             ->with([
                 'last_posts' => $this->last_posts, 
                 'categories' => $this->categories, 
@@ -64,9 +70,8 @@ class BlogController extends Controller
     }
 
     public function showAbout() {
-        $uri = $this->getRouteName();
 
-        return view('blogs.about', compact('posts', 'uri'))
+        return view('blogs.about', compact('posts'))
             ->with([
                 'last_posts' => $this->last_posts, 
                 'categories' => $this->categories, 
@@ -75,9 +80,8 @@ class BlogController extends Controller
     }
 
     public function showContact() {
-        $uri = $this->getRouteName();
 
-        return view('blogs.contact', compact('posts', 'uri'))
+        return view('blogs.contact', compact('posts'))
             ->with([
                 'last_posts' => $this->last_posts, 
                 'categories' => $this->categories, 
@@ -100,7 +104,7 @@ class BlogController extends Controller
         }
         $header = "From: $request->name <$request->email>";
         
-        if (@mail('blog.nurmuhammad@gmail.com', $request->subject, $request->message, $header)) {
+        if (@mail('blog.nurmuhammad@gmail.com', $request->subject, $request->message, $header) == 1) {
             return redirect('contact', ['success' => 'Successfully sent your message.']);
         }
         return redirect('contact');
@@ -110,10 +114,8 @@ class BlogController extends Controller
         $keyword = \Request::get('q');
         $posts = Post::where('title', 'LIKE', '%'.$keyword.'%')->orWhere('content', 'LIKE', '%'.$keyword.'%')->paginate(5);
         $posts->appends(\Request::only('q'))->links();
-        
-        $uri = $this->getRouteName();
 
-        return view('blogs.search', compact('posts', 'uri'))
+        return view('blogs.search', compact('posts'))
             ->with([
                 'last_posts' => $this->last_posts, 
                 'categories' => $this->categories, 
@@ -136,9 +138,7 @@ class BlogController extends Controller
             })->paginate(5);
         }
 
-        $uri = $this->getRouteName();
-
-        return view('blogs.searchby', compact('posts', 'type', 'keywordName','uri'))
+        return view('blogs.searchby', compact('posts', 'type', 'keywordName'))
             ->with([
                 'last_posts' => $this->last_posts, 
                 'categories' => $this->categories, 

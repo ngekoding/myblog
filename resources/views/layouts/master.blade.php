@@ -4,15 +4,9 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		@if ($uri == 'blog_detail')
-			@yield('meta')
-		@else
-			<meta property="og:url" content="{{ url($uri) }}" />
-			<meta property="og:title" content="Nur's Blog" />
-			<meta property="og:description" content="Maker of fine things that live on the interwebs." />
-			<meta property="og:image" content="{{ url('images/logo-blog-2.png') }}" />
-		@endif
-		<title>Nur's Blog</title>
+		
+		@include('common.meta')
+		
 		<link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
 
 		<!-- Bootstrap CSS -->
