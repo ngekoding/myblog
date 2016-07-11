@@ -36,7 +36,7 @@
 						<ul class="home-menu">
 							<li><a href="{{ url('blog') }}" data-toggle="tooltip" title="Blog" data-placement="left"><i class="fa fa-bookmark"></i></a></li>
 							<li><a href="{{ url('about') }}" data-toggle="tooltip" title="About" data-placement="bottom"><i class="fa fa-user"></i></a></li>
-							<li><a href="{{ url('contact') }}" data-toggle="tooltip" title="Contact" data-placement="right"><i class="fa fa-map-marker"></i></a></li>
+							<li><a href="{{ url('contact') }}" data-toggle="tooltip" title="Contact" data-placement="right"><i class="fa fa-envelope"></i></a></li>
 						</ul>
 					</div>
 				</div>

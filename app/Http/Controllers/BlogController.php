@@ -40,8 +40,8 @@ class BlogController extends Controller
 
     	return view('blogs.blog', compact('posts'))
             ->with([
-                'last_posts' => $this->last_posts, 
-                'categories' => $this->categories, 
+                'last_posts' => $this->last_posts,
+                'categories' => $this->categories,
                 'tags' => $this->tags
             ]);
     }
@@ -63,8 +63,8 @@ class BlogController extends Controller
 
     	return view('blogs.detail', compact('post', 'meta'))
             ->with([
-                'last_posts' => $this->last_posts, 
-                'categories' => $this->categories, 
+                'last_posts' => $this->last_posts,
+                'categories' => $this->categories,
                 'tags' => $this->tags
             ]);
     }
@@ -73,8 +73,8 @@ class BlogController extends Controller
 
         return view('blogs.about', compact('posts'))
             ->with([
-                'last_posts' => $this->last_posts, 
-                'categories' => $this->categories, 
+                'last_posts' => $this->last_posts,
+                'categories' => $this->categories,
                 'tags' => $this->tags
             ]);
     }
@@ -83,8 +83,8 @@ class BlogController extends Controller
 
         return view('blogs.contact', compact('posts'))
             ->with([
-                'last_posts' => $this->last_posts, 
-                'categories' => $this->categories, 
+                'last_posts' => $this->last_posts,
+                'categories' => $this->categories,
                 'tags' => $this->tags
             ]);
     }
@@ -103,7 +103,7 @@ class BlogController extends Controller
                 ->withInput();
         }
         $header = "From: $request->name <$request->email>";
-        
+
         if (@mail('blog.nurmuhammad@gmail.com', $request->subject, $request->message, $header)) {
             return redirect('contact')->with('success', 'Successfully sent your message.');
         }
@@ -117,8 +117,8 @@ class BlogController extends Controller
 
         return view('blogs.search', compact('posts'))
             ->with([
-                'last_posts' => $this->last_posts, 
-                'categories' => $this->categories, 
+                'last_posts' => $this->last_posts,
+                'categories' => $this->categories,
                 'tags' => $this->tags
             ]);
     }
@@ -140,8 +140,8 @@ class BlogController extends Controller
 
         return view('blogs.searchby', compact('posts', 'type', 'keywordName'))
             ->with([
-                'last_posts' => $this->last_posts, 
-                'categories' => $this->categories, 
+                'last_posts' => $this->last_posts,
+                'categories' => $this->categories,
                 'tags' => $this->tags
             ]);
     }
