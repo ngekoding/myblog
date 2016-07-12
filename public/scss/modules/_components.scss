@@ -1,0 +1,113 @@
+/* Components */
+.thumbnail {
+    @include border-radius(0px);
+    padding: 0;
+    padding-bottom: 20px;
+    position: relative;
+    .post-date {
+        font-size: 11px;
+        color: $base-font-color;
+    }
+    a {
+        text-decoration: none;
+        color: $dark-color;
+        &:hover {
+            color: $base-font-color;
+        }
+    }
+    .footer {
+        position: absolute;
+        bottom: 0;
+        padding: 10px;
+        font-size: 14px;
+        width: 100%;
+        background: #FFF;
+    }
+    img {
+        width: 100%;
+    }
+}
+.feature-articles {
+    .thumbnail {
+        min-height: 450px;
+    }
+}
+.other-articles {
+    .thumbnail {
+        min-height: 280px;
+    }
+}
+/* Sidebar */
+.sidebar-item {
+    margin-bottom: 20px;
+    padding-left: 30px;
+    .sidebar-title {
+        font-weight: bold;
+        border-bottom: 2px solid $light-color-gray;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+    ul {
+        list-style: none;
+    }
+    /* Sidebar Category */
+    .category-list {
+        padding: 0;
+        li {
+            border-bottom: 1px solid $light-color-gray;
+            line-height: 20px;
+            a {
+                display: block;
+                padding: 8px 0;
+                text-decoration: none;
+                color: $base-font-color;
+                .category-description {
+                    color: $base-font-color;
+                    font-size: 12px;
+                    opacity: 0.8;
+                }
+            }
+            &:last-child {
+                border: none;
+            }
+        }
+    }
+    /* Sidebar Article */
+    .article-list {
+        padding: 0;
+        li {
+            border-bottom: 1px solid $light-color-gray;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            line-height: 20px;
+            img {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            a {
+                color: $dark-color;
+                text-decoration: none;
+                &:hover {
+                    color: $base-font-color;
+                }
+            }
+            &:last-child {
+                border: none;
+            }
+        }
+    }
+    
+}
+/* Other components */
+.cat-tag-links:hover {
+    text-decoration: none;
+}
+
+.contact-form input,
+.contact-form textarea {
+    @include border-radius(0px);
+    @include box-shadow-none();
+    &:focus {
+        border-color: $base-font-color;
+    }
+}

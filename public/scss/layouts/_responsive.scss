@@ -1,0 +1,12 @@
+/* Responsive */
+@media screen and (max-width: 767px) {
+    .sidebar-item {
+        padding: 0;
+    }
+    footer {
+    	text-align: center;
+    	.foot-item {
+    		text-align: center;
+    	}
+    }
+}

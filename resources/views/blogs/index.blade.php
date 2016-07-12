@@ -1,58 +1,103 @@
-<!DOCTYPE html>
-<html lang="">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		@include('common.meta')
+@extends('layouts.master')
 
-		<link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
-
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="{!! asset('vendor/css/bootstrap.min.css') !!}">
-		<!-- Custom style -->
-		<link rel="stylesheet" href="{!! asset('css/home-style.css') !!}">
-		<!-- Font Awesome -->
-		<link rel="stylesheet" href="{!! asset('vendor/font-awesome/css/font-awesome.min.css') !!}">
-
-		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
-	</head>
-	<body>
-		
-		<div class="container-fluid">
+@section('content')
+	
+	<section class="section-showcase" style="background: #21231E url({{ asset('images/headline.jpg') }}) right no-repeat">
+		<div class="container showcase-content">
 			<div class="row">
-				<div class="col-md-12 flex" id="home">
-					<div class="text-center flex-child">
-						<p align="center">
-							<img src="images/logo.png" class="img-responsive home-img" alt="Image" width="150" height="150">
-						</p><br>
-						<p><strong>I'm Nur,</strong> maker of fine things that live on the interwebs.</p><br>
-						<ul class="home-menu">
-							<li><a href="{{ url('blog') }}" data-toggle="tooltip" title="Blog" data-placement="left"><i class="fa fa-bookmark"></i></a></li>
-							<li><a href="{{ url('about') }}" data-toggle="tooltip" title="About" data-placement="bottom"><i class="fa fa-user"></i></a></li>
-							<li><a href="{{ url('contact') }}" data-toggle="tooltip" title="Contact" data-placement="right"><i class="fa fa-envelope"></i></a></li>
-						</ul>
+				<div class="col-md-9">
+					<h1><a href="{{ url('articles/'.$headline->slug) }}">{{ $headline->title }}</a></h1>
+					<p>{{ convertTimestamp($headline->created_at) }}</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+					<div class="block block-primary">
+						<h3>1. PEMULA</h3>
+						<p>Bekal yang harus kamu persiapkan untuk memulai belajar pemrograman.</p>
+						<a href="{{ url('search/category/pemula') }}" class="btn btn-default pull-right">MASUK<i class="fa fa-fw fa-angle-right"></i></a>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<div class="block block-secondary">
+						<h3>2. MENENGAH</h3>
+						<p>Mengasah kemampuanmu lebih jauh dalam pemrograman.</p>
+						<a href="{{ url('search/category/menengah') }}" class="btn btn-default pull-right">MASUK<i class="fa fa-fw fa-angle-right"></i></a>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<div class="block block-primary">
+						<h3>3. MASTAH</h3>
+						<p>Materi yang akan menjadikan kamu mastah dalam pemrograman.</p>
+						<a href="{{ url('search/category/mastah') }}" class="btn btn-default pull-right">MASUK<i class="fa fa-fw fa-angle-right"></i></a>
+						<div class="clearfix"></div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</section>
 
-		<!-- jQuery -->
-		<script src="{!! asset('vendor/js/jquery.min.js') !!}"></script>
-		<!-- Bootstrap JavaScript -->
-		<script src="{!! asset('vendor/js/bootstrap.min.js') !!}"></script>
-		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
- 		<script src="Hello World"></script>
- 		<script>
- 			$(function () {
-			  $('[data-toggle="tooltip"]').tooltip();
-			});
- 		</script>
-	</body>
-</html>
+	<section class="section-light">
+		<div class="container articles-content feature-articles">
+			<div class="row">
+				@foreach ($last_posts as $post)
+					<?php
+					// Remove html tag
+					$content = strip_tags($post->content);
+					?>
+					<div class="col-md-4 col-sm-6">
+						<div class="thumbnail">
+							<a href="{{ url('articles/'.$post->slug) }}">
+								<img src="{{ !empty($post->image) ? $post->image : asset('images/dummy.jpg') }}" alt="Image">
+							</a>
+							<div class="caption">
+								<p class="post-date">{{ convertTimestamp($post->created_at) }}</p>
+								<h3><a href="{{ url('articles/'.$post->slug) }}">{{ $post->title }}</a></h3>
+								<p>{{ str_limit($content, 145) }}</p>
+							</div>
+							<div class="footer">
+								<i class="fa fa-user"></i> {{ $post->author->name }}
+							</div>
+						</div>
+					</div>
+				@endforeach
+			</div>
+		</div>
+	</section>
+
+	<section class="articles">
+		<div class="container articles-content other-articles">
+			<div class="row">
+				@foreach ($other_posts as $post)
+					<div class="col-md-3 col-sm-6">
+						<div class="thumbnail">
+							<a href="{{ url('articles/'.$post->slug) }}">
+								<img src="{{ !empty($post->image) ? $post->image : asset('images/dummy.jpg') }}" alt="Image">
+							</a>
+							<div class="caption">
+								<p class="post-date">{{ convertTimestamp($post->created_at) }}</p>
+								<h4><a href="{{ url('articles/'.$post->slug) }}">{{ $post->title }}</a></h4>
+							</div>
+							<div class="footer">
+								<i class="fa fa-user"></i> {{ $post->author->name }}
+							</div>
+						</div>
+					</div>
+				@endforeach
+			</div>
+			<div class="row" style="margin-top: 10px">
+				<div class="col-md-12 text-center">
+					<a class="btn btn-default" href="{{ url('articles') }}">Lihat Artikel Lainnya<i class="fa fa-fw fa-angle-right"></i></a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+@endsection

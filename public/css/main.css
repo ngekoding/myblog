@@ -1,0 +1,362 @@
+/**
+ * Nur's Blog Bootstrap Sass Theme
+ * Author: Nur Muhammad
+ * Version: 0.0.1
+ */
+/* BASE - Base styles, variables, mixins, etc */
+/* Font Colors */
+/* Background Colors */
+/* Mixins */
+/* line 1, ../scss/base/_normalize.scss */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+}
+
+/* line 1, ../scss/base/_base.scss */
+body {
+  font-family: "Segoe UI", "Segoe WP", "Segoe Relugar", sans-serif;
+  font-size: 15px;
+  color: #666666;
+  line-height: 1.7em;
+}
+
+/* line 7, ../scss/base/_base.scss */
+a {
+  color: #00aff0;
+}
+
+/* line 13, ../scss/base/_base.scss */
+.btn,
+button,
+input,
+textarea {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+
+/* MODULES - Individual site components */
+/* Block */
+/* line 2, ../scss/modules/_blocks.scss */
+.block {
+  padding: 15px;
+  margin-bottom: 15px;
+}
+/* line 5, ../scss/modules/_blocks.scss */
+.block h3 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* line 10, ../scss/modules/_blocks.scss */
+.block-primary {
+  @extends .block;
+  background: #00aff0;
+  color: #fff;
+}
+
+/* line 14, ../scss/modules/_blocks.scss */
+.block-secondary {
+  @extends .block;
+  background: #7fba00;
+  color: #fff;
+}
+
+/* Components */
+/* line 2, ../scss/modules/_components.scss */
+.thumbnail {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  padding: 0;
+  padding-bottom: 20px;
+  position: relative;
+}
+/* line 7, ../scss/modules/_components.scss */
+.thumbnail .post-date {
+  font-size: 11px;
+  color: #666666;
+}
+/* line 11, ../scss/modules/_components.scss */
+.thumbnail a {
+  text-decoration: none;
+  color: #333333;
+}
+/* line 14, ../scss/modules/_components.scss */
+.thumbnail a:hover {
+  color: #666666;
+}
+/* line 18, ../scss/modules/_components.scss */
+.thumbnail .footer {
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+  font-size: 14px;
+  width: 100%;
+  background: #FFF;
+}
+/* line 26, ../scss/modules/_components.scss */
+.thumbnail img {
+  width: 100%;
+}
+
+/* line 31, ../scss/modules/_components.scss */
+.feature-articles .thumbnail {
+  min-height: 450px;
+}
+
+/* line 36, ../scss/modules/_components.scss */
+.other-articles .thumbnail {
+  min-height: 280px;
+}
+
+/* Sidebar */
+/* line 41, ../scss/modules/_components.scss */
+.sidebar-item {
+  margin-bottom: 20px;
+  padding-left: 30px;
+  /* Sidebar Category */
+  /* Sidebar Article */
+}
+/* line 44, ../scss/modules/_components.scss */
+.sidebar-item .sidebar-title {
+  font-weight: bold;
+  border-bottom: 2px solid #efefef;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+/* line 50, ../scss/modules/_components.scss */
+.sidebar-item ul {
+  list-style: none;
+}
+/* line 54, ../scss/modules/_components.scss */
+.sidebar-item .category-list {
+  padding: 0;
+}
+/* line 56, ../scss/modules/_components.scss */
+.sidebar-item .category-list li {
+  border-bottom: 1px solid #efefef;
+  line-height: 20px;
+}
+/* line 59, ../scss/modules/_components.scss */
+.sidebar-item .category-list li a {
+  display: block;
+  padding: 8px 0;
+  text-decoration: none;
+  color: #666666;
+}
+/* line 64, ../scss/modules/_components.scss */
+.sidebar-item .category-list li a .category-description {
+  color: #666666;
+  font-size: 12px;
+  opacity: 0.8;
+}
+/* line 70, ../scss/modules/_components.scss */
+.sidebar-item .category-list li:last-child {
+  border: none;
+}
+/* line 76, ../scss/modules/_components.scss */
+.sidebar-item .article-list {
+  padding: 0;
+}
+/* line 78, ../scss/modules/_components.scss */
+.sidebar-item .article-list li {
+  border-bottom: 1px solid #efefef;
+  margin-bottom: 10px;
+  padding: 8px 0;
+  line-height: 20px;
+}
+/* line 83, ../scss/modules/_components.scss */
+.sidebar-item .article-list li img {
+  width: 100%;
+  margin-bottom: 5px;
+}
+/* line 87, ../scss/modules/_components.scss */
+.sidebar-item .article-list li a {
+  color: #333333;
+  text-decoration: none;
+}
+/* line 90, ../scss/modules/_components.scss */
+.sidebar-item .article-list li a:hover {
+  color: #666666;
+}
+/* line 94, ../scss/modules/_components.scss */
+.sidebar-item .article-list li:last-child {
+  border: none;
+}
+
+/* Other components */
+/* line 102, ../scss/modules/_components.scss */
+.cat-tag-links:hover {
+  text-decoration: none;
+}
+
+/* line 107, ../scss/modules/_components.scss */
+.contact-form input,
+.contact-form textarea {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+/* line 110, ../scss/modules/_components.scss */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #666666;
+}
+
+/* Sections */
+/* line 2, ../scss/modules/_sections.scss */
+section {
+  padding: 40px 0 30px;
+}
+
+/* line 5, ../scss/modules/_sections.scss */
+.section-title {
+  font-family: Arial;
+  font-weight: lighter;
+}
+
+/* line 9, ../scss/modules/_sections.scss */
+.section-showcase {
+  background: #333333;
+  min-height: 250px;
+}
+/* line 12, ../scss/modules/_sections.scss */
+.section-showcase h1 {
+  font-size: 40px;
+}
+/* line 14, ../scss/modules/_sections.scss */
+.section-showcase h1 a {
+  text-decoration: none;
+}
+/* line 17, ../scss/modules/_sections.scss */
+.section-showcase h1 a:hover {
+  color: #efefef;
+}
+/* line 22, ../scss/modules/_sections.scss */
+.section-showcase .showcase-content,
+.section-showcase a {
+  color: #fff;
+}
+
+/* line 26, ../scss/modules/_sections.scss */
+.section-primary {
+  background: #00aff0;
+  color: #fff;
+}
+
+/* line 29, ../scss/modules/_sections.scss */
+.section-secondary {
+  background: #7fba00;
+  color: #fff;
+}
+
+/* line 32, ../scss/modules/_sections.scss */
+.section-light {
+  background: #fafafa;
+  color: #666666;
+}
+
+/* line 35, ../scss/modules/_sections.scss */
+.section-dark {
+  background: #333333;
+  color: #fff;
+}
+
+/* Section perpage */
+/* line 39, ../scss/modules/_sections.scss */
+.section-header {
+  background: #fafafa;
+}
+
+/* LAYOUTS - Page layout styles */
+/* Navbar */
+/* line 2, ../scss/layouts/_nav.scss */
+.navbar {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  background: white;
+  border: none;
+  border-bottom: 1px solid #efefef;
+  margin-bottom: 0;
+}
+/* line 8, ../scss/layouts/_nav.scss */
+.navbar a {
+  color: #666666 !important;
+}
+/* line 11, ../scss/layouts/_nav.scss */
+.navbar input[type=search] {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+/* line 14, ../scss/layouts/_nav.scss */
+.navbar input[type=search]:focus {
+  border-color: #666666;
+}
+
+/* line 21, ../scss/layouts/_nav.scss */
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li > a:hover {
+  background: #fafafa !important;
+}
+
+/* Footer */
+/* line 2, ../scss/layouts/_footer.scss */
+footer {
+  padding: 30px 0;
+  background: #F2F2F2;
+  font-size: 13px;
+}
+/* line 6, ../scss/layouts/_footer.scss */
+footer ul {
+  list-style: none;
+  padding: 0;
+}
+/* line 9, ../scss/layouts/_footer.scss */
+footer ul li {
+  display: inline-block;
+  margin: 0 3px;
+}
+/* line 12, ../scss/layouts/_footer.scss */
+footer ul li:last-child {
+  margin-right: 0;
+}
+/* line 15, ../scss/layouts/_footer.scss */
+footer ul li img {
+  height: 20px !important;
+}
+/* line 20, ../scss/layouts/_footer.scss */
+footer a {
+  color: #333333;
+  text-decoration: none;
+}
+/* line 23, ../scss/layouts/_footer.scss */
+footer a:hover {
+  color: #333333;
+}
+
+/* Responsive */
+@media screen and (max-width: 767px) {
+  /* line 3, ../scss/layouts/_responsive.scss */
+  .sidebar-item {
+    padding: 0;
+  }
+
+  /* line 6, ../scss/layouts/_responsive.scss */
+  footer {
+    text-align: center;
+  }
+  /* line 8, ../scss/layouts/_responsive.scss */
+  footer .foot-item {
+    text-align: center;
+  }
+}

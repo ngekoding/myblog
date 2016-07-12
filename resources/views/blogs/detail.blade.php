@@ -1,69 +1,74 @@
 @extends('layouts.master')
 
-@if (!empty($post))
-	@section('meta')
-		<?php
-		// Remove html tag from content 
-		$content = strip_tags($post->content);
-		if (!empty($post->image)) {
-			$featureImg = $post->image;
-		} else {
-			preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $post->content, $image);
-			$image['src'] = !empty($image) ? url($image['src']) : '';
-		}
-		?>
-		<meta property="og:url" content="{{ url('blog/'.$post->slug) }}" />
-		<meta property="og:title" content="{{ $post->title }}" />
-		<meta property="og:description" content="{!! strlen($content) > 150 ? substr($content, 0, 150) . '...' : $content !!}" />
-		<meta property="og:image" content="{{ !empty($featureImg) ? url($featureImg) : $image['src'] }}" />
-	@endsection
-@endif
-
 @section('content')
 
-	@if (!empty($post))
-		<article>
-			<header>
-				<h1>{{ $post->title }}</h1>
-				<p class="article-info">
-					<i class="fa fa-calendar"></i> &nbsp; {{ $post->created_at }} &nbsp; <i class="fa fa-user"></i> &nbsp; {{ $post->author->name }} &nbsp;
-					<i class="fa fa-folder"></i> &nbsp;
-					<?php 
-					$categoryList = '';
-					foreach ($post->categories as $category) {
-						$categoryList .= "<a href='/search/category/$category->slug'>$category->name</a>, ";
-					}
-					$categoryList = rtrim($categoryList, ', '); 
-					?>
-					{!! !empty($categoryList) ? $categoryList : 'Uncategorized' !!}
-				</p>
-			</header>
-			{!! $post->content !!}
-			<footer>
-				<i class="fa fa-tags"></i> &nbsp;
-				<?php 
-				$tagList = '';
-				foreach ($post->tags as $tag) {
-					$tagList .= "<a href='/search/tag/$tag->slug'>$tag->name</a>, ";
-				}
-				$tagList = rtrim($tagList, ', '); 
-				?>
-				{!! !empty($tagList) ? $tagList : 'Untagged' !!}
-				<span class="pull-right">
-					<i class="fa fa-comment"></i> <a href="{{ url('blog/'.$post->slug) . '#disqus_thread' }}" data-disqus-identifier="{{ $post->slug }}">Comments</a>
-				</span>
-			</footer>
-		</article>
-		<article>
-			@include('blogs.partials.disqus')
-		</article>
-	@else
-		<article>
-			<header>
-				<h1>Ooops...</h1>
-			</header>
-			<p>The page you are looking for <strong>Not Found!</strong></p>
-		</article>
-	@endif
+	<section class="section-header">
+        <div class="container">
+            <h1>{{ $post->title }}</h1>
+            <p>
+                <span class="label label-success"><i class="fa fa-calendar-o"></i> {{ convertTimestamp($post->created_at) }}</span>
+                <span class="label label-primary"><i class="fa fa-user"></i> {{ $post->author->name }}</span>
+                @foreach ($post->categories as $category)
+                    <a href="{{ url('search/category/'.$category->slug) }}" class="cat-tag-links">
+                	   <span class="label label-default">{{ $category->name }}</span>
+                    </a>
+				@endforeach
+            </p>
+        </div>
+    </section>
+
+	<section class="articles">
+		<div class="container articles-content">
+			<div class="row">
+                <div class="col-md-8 col-sm-8">
+                    {!! $post->content !!}
+                    <!-- Article Footer -->
+                	<hr>
+                	@foreach ($post->tags as $tag)
+                        <a href="{{ url('search/tag/'.$tag->slug) }}" class="cat-tag-links">
+                            <span class="label label-primary">#{{ $tag->name }}</span>
+                        </a>
+					@endforeach
+					
+					<div class="clearfix"></div> <br>
+
+					@include('blogs.partials.disqus')
+
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <div class="sidebar-item">
+                        <button class="btn btn-success btn-block btn-lg"><i class="fa fa-pencil"></i> TULIS ARTIKEL</button>
+                    </div>
+                    <div class="sidebar-item">
+                        <div class="sidebar-title">KATEGORI</div>
+                        <ul class="category-list">
+                        	@foreach ($categories as $category)
+                        		<li>
+                        			<a href="{{ url('search/category/'.$category->slug) }}">{{ $category->name }}<div class="category-description">{{ $category->description }}</div></a>
+                        		</li>
+							@endforeach
+                        </ul>
+                    </div>
+                    <div class="sidebar-item">
+                        <div class="sidebar-title">ARTIKEL LAINNYA</div>
+                        <ul class="article-list">
+                        	@foreach($last_posts as $post)
+								<?php 
+								// Get first image from content
+								preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $post->content, $image);
+								$image['src'] = !empty($image) ? $image['src'] : 'images/dummy.jpg';
+								?>
+								<li>
+									<a href="{{ url('articles/'.$post->slug) }}">
+	                                    <img src="{{ !empty($post->image) ? $post->image : $image['src'] }}" alt="Image"> {{ $post->title }}
+	                                </a>
+								</li>
+							@endforeach
+                        </ul>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</section>
 
 @endsection

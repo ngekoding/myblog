@@ -16,11 +16,10 @@
  */
 
 Route::get('/', 'BlogController@index');
-Route::get('/blog/search', ['uses' => 'BlogController@search', 'as' => 'blog.search']);
-Route::get('/blog', 'BlogController@showPost');
-Route::get('/blog/search/{type}/{keyword}', 'BlogController@searchBy');
-Route::get('/blog/{slug}', 'BlogController@showPostDetail');
-Route::get('/about', 'BlogController@showAbout');
+Route::get('/search', ['uses' => 'BlogController@search', 'as' => 'search']);
+Route::get('/articles', 'BlogController@showPost');
+Route::get('/articles/{slug}', 'BlogController@showPostDetail');
+Route::get('/search/{type}/{keyword}', 'BlogController@searchBy');
 Route::get('/contact', 'BlogController@showContact');
 Route::post('/contact', 'BlogController@sendEmail');
 

@@ -1,0 +1,41 @@
+/* Sections */
+section {
+    padding: 40px 0 30px;
+}
+.section-title {
+    font-family: Arial;
+    font-weight: lighter;
+}
+.section-showcase {
+    background: $dark-color;
+    min-height: 250px;
+    h1 {
+        font-size: 40px;
+        a {
+            text-decoration: none;
+        }
+        a:hover {
+            color: $light-color-gray;
+        }
+    }
+    .showcase-content,
+    a {
+        color: #fff;
+    }
+}
+.section-primary {
+    @include add-background($primary-color);
+}
+.section-secondary {
+    @include add-background($secondary-color);
+}
+.section-light {
+    @include add-background($light-color);
+}
+.section-dark {
+    @include add-background($dark-color);
+}
+/* Section perpage */
+.section-header {
+    background: $light-color;
+}

@@ -1,0 +1,25 @@
+/* Mixins */
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+@mixin add-background($color) {
+    background: $color;
+    @if $color == $light-color {
+        color: $base-font-color;
+    }
+    @else {
+        color: #fff;
+    }
+}
+@mixin box-shadow-none() {
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}
+@mixin box-shadow($par1, $par2, $weight, $color) {
+    -webkit-box-shadow: $par1 $par2 $weight $color;
+    -moz-box-shadow: $par1 $par2 $weight $color;
+    box-shadow: $par1 $par2 $weight $color;
+}

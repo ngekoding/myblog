@@ -1,0 +1,23 @@
+/* Navbar */
+.navbar {
+    @include border-radius(0px);
+    background: white;
+    border: none;
+    border-bottom: 1px solid $light-color-gray;
+    margin-bottom: 0;
+    a {
+        color: $base-font-color !important;
+    }
+    input[type=search] {
+        @include border-radius(0px);
+        @include box-shadow-none();
+        &:focus {
+            border-color: $base-font-color;
+        }
+    }
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li > a:hover {
+    background: $light-color !important;
+}

@@ -1,0 +1,15 @@
+body {
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    color: $base-font-color;
+    line-height: 1.7em;
+}
+a {
+    color: $primary-color;
+}
+.btn,
+button,
+input,
+textarea {
+    @include border-radius(0px);
+}

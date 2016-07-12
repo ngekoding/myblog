@@ -26,7 +26,11 @@ class BlogController extends Controller
     }
 
     public function index() {
-    	return view('blogs.index');
+        $headline = Post::inRandomOrder()->first();
+        $last_posts = Post::orderBy('created_at', 'desc')->take(3)->get();
+        $other_posts = Post::orderBy('created_at', 'desc')->skip(3)->take(8)->get();
+
+    	return view('blogs.index', compact('headline', 'last_posts', 'other_posts'));
     }
 
     private function getBlogSidebarContent() {
@@ -36,23 +40,17 @@ class BlogController extends Controller
     }
 
     public function showPost() {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(5);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(8);
 
-    	return view('blogs.blog', compact('posts'))
-            ->with([
-                'last_posts' => $this->last_posts,
-                'categories' => $this->categories,
-                'tags' => $this->tags
-            ]);
+    	return view('blogs.articles', compact('posts'));
     }
 
     public function showPostDetail($slug) {
         $post = Post::where('slug', $slug)->first();
 
         preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $post->content, $image);
-        if (empty($image)) {
-            $image['src'] = '';
-        }
+        $image['src'] = !empty($image) ? $image['src'] : 'images/dummy.jpg';
+
         $img = !empty($post->image) ? $post->image : $image['src'];
 
         $meta = [
@@ -69,24 +67,9 @@ class BlogController extends Controller
             ]);
     }
 
-    public function showAbout() {
-
-        return view('blogs.about', compact('posts'))
-            ->with([
-                'last_posts' => $this->last_posts,
-                'categories' => $this->categories,
-                'tags' => $this->tags
-            ]);
-    }
-
     public function showContact() {
 
-        return view('blogs.contact', compact('posts'))
-            ->with([
-                'last_posts' => $this->last_posts,
-                'categories' => $this->categories,
-                'tags' => $this->tags
-            ]);
+        return view('blogs.contact', compact('posts'));
     }
 
     public function sendEmail(Request $request) {
@@ -112,15 +95,14 @@ class BlogController extends Controller
 
     public function search() {
         $keyword = \Request::get('q');
-        $posts = Post::where('title', 'LIKE', '%'.$keyword.'%')->orWhere('content', 'LIKE', '%'.$keyword.'%')->paginate(5);
+        $posts = Post::where('title', 'LIKE', '%'.$keyword.'%')->orWhere('content', 'LIKE', '%'.$keyword.'%')->paginate(8);
         $posts->appends(\Request::only('q'))->links();
 
-        return view('blogs.search', compact('posts'))
-            ->with([
-                'last_posts' => $this->last_posts,
-                'categories' => $this->categories,
-                'tags' => $this->tags
-            ]);
+        $other_posts = '';
+        if (count($posts) == 0) {
+            $other_posts = Post::inRandomOrder()->take(4)->get();
+        }
+        return view('blogs.search', compact('posts', 'other_posts'));
     }
 
     public function searchBy($type, $keyword) {
@@ -129,21 +111,21 @@ class BlogController extends Controller
             if (empty($keywordName)) return abort(404);
             $posts = Post::whereHas('tags', function ($q) use ($keyword) {
                 $q->where('tags.slug', '=', $keyword);
-            })->paginate(5);
+            })->paginate(8);
         } else {
             $keywordName = Category::where('slug', $keyword)->first();
             if (empty($keywordName)) return abort(404);
             $posts = Post::whereHas('categories', function ($q) use ($keyword) {
                 $q->where('categories.slug', '=', $keyword);
-            })->paginate(5);
+            })->paginate(8);
         }
 
-        return view('blogs.searchby', compact('posts', 'type', 'keywordName'))
-            ->with([
-                'last_posts' => $this->last_posts,
-                'categories' => $this->categories,
-                'tags' => $this->tags
-            ]);
+        $other_posts = '';
+        if (count($posts) == 0) {
+            $other_posts = Post::inRandomOrder()->take(4)->get();
+        }
+
+        return view('blogs.searchby', compact('posts', 'type', 'keywordName', 'other_posts'));
     }
 
 }
