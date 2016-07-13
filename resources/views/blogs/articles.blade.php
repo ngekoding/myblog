@@ -7,15 +7,10 @@
 			<div class="row">
 				@if (count($posts) > 0)
 					@foreach($posts as $post)
-						<?php 
-						// Get first image from content
-						preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $post->content, $image);
-						$image['src'] = !empty($image) ? $image['src'] : 'images/dummy.jpg';
-						?>
 						<div class="col-md-3 col-sm-6">
 							<div class="thumbnail">
 								<a href="{{ url('articles/'.$post->slug) }}">
-									<img src="{{ !empty($post->image) ? $post->image : $image['src'] }}" alt="Image">
+									<img src="{{ !empty($post->image) ? $post->image : asset('images/dummy.png') }}" alt="Image">
 								</a>
 								<div class="caption">
 									<p class="post-date">{{ convertTimestamp($post->created_at) }}</p>

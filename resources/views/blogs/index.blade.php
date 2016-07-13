@@ -55,7 +55,7 @@
 					<div class="col-md-4 col-sm-6">
 						<div class="thumbnail">
 							<a href="{{ url('articles/'.$post->slug) }}">
-								<img src="{{ !empty($post->image) ? $post->image : asset('images/dummy.jpg') }}" alt="Image">
+								<img src="{{ !empty($post->image) ? $post->image : asset('images/dummy.png') }}" alt="Image">
 							</a>
 							<div class="caption">
 								<p class="post-date">{{ convertTimestamp($post->created_at) }}</p>
@@ -79,7 +79,7 @@
 					<div class="col-md-3 col-sm-6">
 						<div class="thumbnail">
 							<a href="{{ url('articles/'.$post->slug) }}">
-								<img src="{{ !empty($post->image) ? $post->image : asset('images/dummy.jpg') }}" alt="Image">
+								<img src="{{ !empty($post->image) ? $post->image : asset('images/dummy.png') }}" alt="Image">
 							</a>
 							<div class="caption">
 								<p class="post-date">{{ convertTimestamp($post->created_at) }}</p>

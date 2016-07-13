@@ -37,9 +37,6 @@
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <div class="sidebar-item">
-                        <button class="btn btn-success btn-block btn-lg"><i class="fa fa-pencil"></i> TULIS ARTIKEL</button>
-                    </div>
-                    <div class="sidebar-item">
                         <div class="sidebar-title">KATEGORI</div>
                         <ul class="category-list">
                         	@foreach ($categories as $category)
@@ -53,14 +50,9 @@
                         <div class="sidebar-title">ARTIKEL LAINNYA</div>
                         <ul class="article-list">
                         	@foreach($last_posts as $post)
-								<?php 
-								// Get first image from content
-								preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $post->content, $image);
-								$image['src'] = !empty($image) ? $image['src'] : 'images/dummy.jpg';
-								?>
 								<li>
 									<a href="{{ url('articles/'.$post->slug) }}">
-	                                    <img src="{{ !empty($post->image) ? $post->image : $image['src'] }}" alt="Image"> {{ $post->title }}
+	                                    <img src="{{ !empty($post->image) ? $post->image : asset('images/dummy.png') }}" alt="Image"> {{ $post->title }}
 	                                </a>
 								</li>
 							@endforeach
