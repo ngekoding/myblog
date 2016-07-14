@@ -21,7 +21,13 @@
         padding: 10px;
         font-size: 14px;
         width: 100%;
-        background: #FFF;
+        background: #FFF; 
+        a {
+            color: $base-font-color;
+            &:hover {
+                color: $dark-color;
+            }
+        }
     }
     img {
         width: 100%;

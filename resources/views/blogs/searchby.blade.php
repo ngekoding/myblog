@@ -28,6 +28,10 @@
 								</div>
 								<div class="footer">
 									<i class="fa fa-user"></i> {{ $post->author->name }}
+									<span style="float: right">
+										<a href="{{ url('articles/'.$post->slug) }}#comments"><i class="fa fa-comment"></i></a>
+										<a href="{{ url('articles/'.$post->slug) }}#disqus_thread">0</a>
+									</span>
 								</div>
 							</div>
 						</div>
@@ -53,6 +57,10 @@
 								</div>
 								<div class="footer">
 									<i class="fa fa-user"></i> {{ $post->author->name }}
+									<span style="float: right">
+										<a href="{{ url('articles/'.$post->slug) }}#comments"><i class="fa fa-comment"></i></a>
+										<a href="{{ url('articles/'.$post->slug) }}#disqus_thread">0</a>
+									</span>
 								</div>
 							</div>
 						</div>

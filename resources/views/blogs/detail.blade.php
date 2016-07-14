@@ -31,9 +31,12 @@
 					@endforeach
 					
 					<div class="clearfix"></div> <br>
-
-					@include('blogs.partials.disqus')
-
+                    
+                    <!-- For comments icon link -->
+                    <div id="comments"></div>
+					
+                    @include('blogs.partials.disqus')
+        
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <div class="sidebar-item">

@@ -84,7 +84,6 @@
 		</div>
 	</footer>
 
-	<script id="dsq-count-scr" src="//nursblog.disqus.com/count.js" async></script>
 	<!-- jQuery -->
 	<script src="{{ asset('vendor/js/jquery.min.js') }}"></script>
 	<!-- Bootstrap JavaScript -->
@@ -95,6 +94,8 @@
 	<script src="Hello World"></script>
 	<!-- Go to www.addthis.com/dashboard to customize your tools -->
 	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5754afdfd7897c7d"></script>
+	<!-- Disqus Comments -->
+	<script id="dsq-count-scr" src="//nursblog.disqus.com/count.js" async></script>
 </body>
 
 </html>

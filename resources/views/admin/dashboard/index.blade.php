@@ -33,7 +33,7 @@
 				      @if (auth()->user()->hasRole('admin'))
 				      <th>Author</th>
 				      @endif
-				      <th>Comments</th>
+				      <th width="50">#</th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -47,11 +47,15 @@
 					      @if (auth()->user()->hasRole('admin'))
 					      <td>{{ $post->author->name }}</td>
 					      @endif
-					      <td><i class="fa fa-comment"></i> <a title="Go to this post comment..." target="_blank" href="{{ url('blog/'.$post->slug) . '#disqus_thread' }}" data-disqus-identifier="{{ $post->slug }}">Comments</a></td>
+					      <td>
+					      	<a href="{{ url('articles/'.$post->slug) }}#comments"><i class="fa fa-comment"></i></a>
+							<a href="{{ url('articles/'.$post->slug) }}#disqus_thread">0</a>
+					      </td>
 					    </tr>
 				  	@endforeach
 				  </tbody>
 				</table>
+				<!-- Disqus Comments -->
 				<script id="dsq-count-scr" src="//nursblog.disqus.com/count.js" async></script>
 			</div>
 		</div>

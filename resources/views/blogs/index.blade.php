@@ -2,7 +2,7 @@
 
 @section('content')
 	
-	<section class="section-showcase" style="background: #21231E url({{ asset('images/headline.jpg') }}) right no-repeat">
+	<section class="section-showcase" style="background: #21231E url({{ asset('images/headline.png') }}) top right no-repeat">
 		<div class="container showcase-content">
 			<div class="row">
 				<div class="col-md-9">
@@ -64,6 +64,10 @@
 							</div>
 							<div class="footer">
 								<i class="fa fa-user"></i> {{ $post->author->name }}
+								<span style="float: right">
+									<a href="{{ url('articles/'.$post->slug) }}#comments"><i class="fa fa-comment"></i></a>
+									<a href="{{ url('articles/'.$post->slug) }}#disqus_thread">0</a>
+								</span>
 							</div>
 						</div>
 					</div>
@@ -87,6 +91,10 @@
 							</div>
 							<div class="footer">
 								<i class="fa fa-user"></i> {{ $post->author->name }}
+								<span style="float: right">
+									<a href="{{ url('articles/'.$post->slug) }}#comments"><i class="fa fa-comment"></i></a>
+									<a href="{{ url('articles/'.$post->slug) }}#disqus_thread">0</a>
+								</span>
 							</div>
 						</div>
 					</div>
