@@ -29,11 +29,11 @@
 					{{ Form::label('content', 'Content') }}
 					<textarea name="content" class="form-control tiny"><?=htmlentities(Form::old('content'))?></textarea>
 				</div>
-				<div class="form-group col-md-6 no-padding-left">
+				<div class="form-group col-md-6 no-padding-left no-padding-right-res">
 					{{ Form::label('category', 'Category') }}
 					{{ Form::select('categories[]', $categories, null, ['class' => 'form-control select2', 'multiple' => 'multiple']) }}
 				</div>
-				<div class="form-group col-md-6 no-padding-right">
+				<div class="form-group col-md-6 no-padding-right no-padding-left-res">
 					{{ Form::label('tag', 'Tag') }}
 					{{ Form::select('tags[]', $tags, null, ['class' => 'form-control select2', 'multiple' => 'multiple']) }}
 				</div>

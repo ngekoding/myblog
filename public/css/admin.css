@@ -116,3 +116,25 @@ html, body {
 .no-padding-right {
 	padding-right: 0;
 }
+
+/* Navbar */
+.navbar-inverse {
+	background: #1C262F;
+	border-color: #1B2228;
+}
+
+/* Responsive */
+@media screen and (max-width: 767px) {
+	.content-title {
+		margin-top: 50px;
+	}
+}
+
+@media screen and (max-width: 990px){
+	.no-padding-left-res {
+		padding-left: 0;
+	}
+	.no-padding-right-res {
+		padding-right: 0;
+	}
+}

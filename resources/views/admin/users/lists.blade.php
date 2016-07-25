@@ -7,7 +7,7 @@
     <tr>
       <th>#</th>
       <th>Name</th>
-      <th>Email</th>
+      <th class="hidden-xs">Email</th>
       <th>Role</th>
       <th width="65">Action</th>
     </tr>
@@ -20,7 +20,7 @@
 		<tr>
 	      <th scope="row">{{ $no++ }}</th>
 	      <td>{{ $user->name }}</td>
-	      <td>{{ $user->email }}</td>
+	      <td class="hidden-xs">{{ $user->email }}</td>
 	      <td>
 	      	<?php $roles = '' ?>
 	     	@foreach ($user->roles as $role)

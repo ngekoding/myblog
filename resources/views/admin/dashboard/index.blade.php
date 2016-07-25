@@ -31,7 +31,7 @@
 				      <th>#</th>
 				      <th>Title</th>
 				      @if (auth()->user()->hasRole('admin'))
-				      <th>Author</th>
+				      <th class="hidden-xs">Author</th>
 				      @endif
 				      <th width="50">#</th>
 				    </tr>
@@ -45,7 +45,7 @@
 					      <th scope="row">{{ $no++ }}</th>
 					      <td>{{ $post->title }}</td>
 					      @if (auth()->user()->hasRole('admin'))
-					      <td>{{ $post->author->name }}</td>
+					      <td class="hidden-xs">{{ $post->author->name }}</td>
 					      @endif
 					      <td>
 					      	<a href="{{ url('articles/'.$post->slug) }}#comments"><i class="fa fa-comment"></i></a>
@@ -70,7 +70,7 @@
 				    <tr>
 				      <th>#</th>
 				      <th>Name</th>
-				      <th>Email</th>
+				      <th class="hidden-xs">Email</th>
 				      @if (auth()->user()->hasRole('admin'))
 				      <th width="65">Action</th>
 				      @endif
@@ -84,7 +84,7 @@
 						<tr>
 					      <th scope="row">{{ $no++ }}</th>
 					      <td>{{ $user->name }}</td>
-					      <td>{{ $user->email }}</td>
+					      <td class="hidden-xs">{{ $user->email }}</td>
 						  @if (auth()->user()->hasRole('admin'))
 					      <td>
 					      	{{ Form::open([

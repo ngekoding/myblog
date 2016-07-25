@@ -15,9 +15,9 @@
 			    <tr>
 			      <th>#</th>
 			      <th>Title</th>
-			      <th>Author</th>
-			      <th>Categories</th>
-			      <th>Created At</th>
+			      <th class="hidden-xs">Author</th>
+			      <th class="hidden-xs">Categories</th>
+			      <th class="hidden-xs">Created At</th>
 			      <th width="65">Action</th>
 			    </tr>
 			  </thead>
@@ -29,8 +29,8 @@
 					<tr>
 				      <th scope="row">{{ $no++ }}</th>
 				      <td>{{ $post->title }}</td>
-				      <td>{{ $post->author->name }}</td>
-				      <td>
+				      <td class="hidden-xs">{{ $post->author->name }}</td>
+				      <td class="hidden-xs">
 				      	<?php $categories = "" ?>
 				      	@if(count($post->categories) > 0)
 							@foreach($post->categories as $category)
@@ -41,7 +41,7 @@
 							Uncategorized
 						@endif
 				      </td>
-				      <td>{{ $post->created_at }}</td>
+				      <td class="hidden-xs">{{ $post->created_at }}</td>
 				      <td>
 						{{ Form::open([
 				      			'method' => 'DELETE',
