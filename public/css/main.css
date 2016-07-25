@@ -215,6 +215,14 @@ textarea {
   border-color: #666666;
 }
 
+/* For responsive TinyMCE image content */
+/* line 121, ../scss/modules/_components.scss */
+.articles img {
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
+}
+
 /* Sections */
 /* line 2, ../scss/modules/_sections.scss */
 section {

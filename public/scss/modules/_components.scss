@@ -117,3 +117,9 @@
         border-color: $base-font-color;
     }
 }
+/* For responsive TinyMCE image content */
+.articles img {
+    display: inline-block;
+    height: auto;
+    max-width: 100%;
+}
